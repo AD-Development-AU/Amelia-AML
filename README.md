@@ -5,12 +5,13 @@ practice (≤15 personnel) customise [AUSTRAC's publicly-available Legal profess
 program starter kit](https://www.austrac.gov.au/industry-and-business/obligations-and-guidance/program-starter-kits/legal-profession-program-starter-kit/legal-profession-program-starter-kit-document-library)
 ahead of the Tranche 2 commencement on **1 July 2026**.
 
-- **Version:** v0.1.0
+- **Version:** v0.2.0
 - **Modelled on AUSTRAC starter kit release:** January 2026
-- **License:** [MIT](./LICENSE)
-- **Status:** alpha — usable, but template files and some catalogue titles
-  still need verification against the AUSTRAC library (see [Known gaps](#known-gaps)
-  and [`VERIFIED.md`](./VERIFIED.md)).
+- **License:** [MIT](./LICENSE); bundled AUSTRAC templates © Commonwealth of
+  Australia, reused under AUSTRAC's Creative Commons licence with attribution.
+- **Status:** alpha — usable. The full set of 43 AUSTRAC Legal profession + Conveyancers
+  templates is now bundled in [`vendor/templates/`](./vendor/templates) and auto-loads
+  when the file is served (or one-click bulk-loads when opened from `file://`).
 
 > ⚠️ **Not legal advice. Not affiliated with AUSTRAC.** This tool helps prepare
 > records from your own inputs. It does not decide compliance, verify customer
@@ -30,14 +31,22 @@ ahead of the Tranche 2 commencement on **1 July 2026**.
 1. Download or clone this repository.
 2. Open `index.html` in a modern browser (Chrome/Edge/Firefox/Safari, last two
    versions). No server required.
-3. Work through the 12 wizard steps. Progress autosaves to your browser's
+3. Work through the 13 wizard steps. Progress autosaves to your browser's
    `localStorage`; attached DOCX templates persist in IndexedDB.
-4. On the **Templates** step, attach a `.docx` template per recommended document.
-   Templates use Mustache-style tags — e.g. `{practiceName}`, `{complianceOfficer}`,
-   `{overallRiskRating}`. The Templates step lists every available tag.
-5. On the **Generate** step, click **Generate selected documents** — produces a
-   ZIP of rendered DOCX files (or single DOCX, or a fallback `.txt` bundle if no
-   templates are attached).
+4. **Templates auto-load.** When the file is served over `http(s)` (e.g.
+   `python -m http.server` from the repo root) the 43 bundled AUSTRAC templates
+   load automatically on boot. When you open the file via `file://` most browsers
+   block the auto-fetch — the Templates step shows a one-click "Load AUSTRAC
+   template pack" button that lets you select all `.docx` files in
+   `vendor/templates/` in one go. Templates persist in IndexedDB after either
+   path, so it's a one-time action.
+5. Attach your own `.docx` to override any bundled template (uses Mustache-style
+   tags — `{practiceName}`, `{complianceOfficer}`, etc; full list on the
+   Templates step).
+6. On the **Generate** step, click **Generate selected documents** — produces a
+   ZIP of rendered DOCX files (or single DOCX).
+7. The **Compliance dashboard** (step 13) shows the firm's full AML state on
+   one page and is the source of the point-in-time PDF report.
 
 Everything runs on your device. No data is sent to a server. The bundled
 `./vendor/` JavaScript libraries (PizZip, docxtemplater, JSZip) ensure the tool
@@ -50,10 +59,16 @@ works without an internet connection.
 ```
 .
 ├── index.html                ← the wizard (single file, run in a browser)
-├── vendor/                   ← bundled third-party libraries (verify via VENDOR.md)
-│   ├── pizzip.min.js
-│   ├── docxtemplater.js
-│   └── jszip.min.js
+├── vendor/
+│   ├── pizzip.min.js         ← DOCX zip handling
+│   ├── docxtemplater.js      ← Mustache-style template engine
+│   ├── jszip.min.js          ← ZIP bundling for multi-doc output
+│   └── templates/            ← 43 AUSTRAC starter-kit .docx files (auto-loaded)
+│       ├── policy-document.docx
+│       ├── process-document.docx
+│       ├── ra-conveyancing.docx
+│       ├── (etc — see vendor/templates/manifest.json)
+│       └── _bundle.ps1       ← script that copies + renames the AUSTRAC originals
 ├── LICENSE                   ← MIT + third-party + AUSTRAC attribution notice
 ├── DISCLAIMER.md             ← full "not legal advice" disclaimer
 ├── SECURITY.md               ← how to report a security issue
@@ -61,8 +76,6 @@ works without an internet connection.
 ├── VERIFIED.md               ← which catalogue entries are verified vs extrapolated
 └── README.md
 ```
-
-DOCX templates themselves are **not** bundled. See [Templates](#templates) below.
 
 ---
 

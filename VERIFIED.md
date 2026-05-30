@@ -3,51 +3,111 @@
 This file records what has been verified against the live AUSTRAC Legal
 profession program starter kit document library, and what has not.
 
-**Last verification attempt:** 2026-05-29
+**Last verification:** 2026-05-30
 **AUSTRAC release modelled on:** January 2026
+**Source:** `https://www.austrac.gov.au/sites/default/files/2026-01/`
 
-## Verified — confirmed against AUSTRAC sources or filename pattern
+## Verified — files bundled in `vendor/templates/`
 
-| Catalogue id | Source of verification |
+All 43 templates below have been downloaded directly from AUSTRAC and bundled
+in `vendor/templates/` keyed by the catalogue id. Original AUSTRAC filenames
+are recorded in `vendor/templates/manifest.json`.
+
+### Step 1 — Spine documents (5)
+
+| Catalogue id | AUSTRAC filename |
 |---|---|
-| `customise-guide` | AUSTRAC starter kit overview page |
-| `policy-document` | AUSTRAC document library — `Legal profession - Policy document - January 2026.docx` (URL confirmed) |
-| `process-document` | AUSTRAC document library |
-| `ra-conveyancing` | AUSTRAC document library URL confirmed |
-| `ra-other-prof-services` | AUSTRAC document library URL confirmed |
-| `pdd-compliance-officer` | AUSTRAC filename confirmed |
-| `unusual-activity-review` | AUSTRAC filename confirmed |
+| `customise-guide` | Legal profession - Customise guide - January 2026.docx |
+| `policy-document` | Legal profession - Policy document - January 2026.docx |
+| `process-document` | Legal profession - Process document - January 2026.docx |
+| `ra-conveyancing` | Legal profession - Risk assessment - Conveyancing for the legal profession - January 2026.docx |
+| `ra-other-prof-services` | Legal profession - Risk assessment - Other professional services - January 2026.docx |
 
-## Extrapolated — title pattern inferred from parallel Accountants/Conveyancers kits
+### Step 1 — Personnel forms (5)
 
-These catalogue entries follow the same filename pattern AUSTRAC uses for the
-sister Accountants and Conveyancers starter kits (which were directly
-accessible at the time of writing). The legal-kit equivalents almost certainly
-exist with "Legal profession" substituted, but the titles below should be
-re-verified against the live library when it loads reliably.
-
-| Catalogue id | Notes |
+| Catalogue id | AUSTRAC filename |
 |---|---|
-| `assign-responsibilities` | Confirmed in Accountants kit |
-| `pdd-co-equals-governing-body` | Confirmed in Accountants kit |
-| `pdd-general-staff` | Pattern only |
-| `training-records` | Pattern only |
-| `final-onboarding-checks` | Pattern only — referenced in AUSTRAC Step 2 prose |
-| `escalation-form` | Pattern only — referenced in AUSTRAC policy doc |
-| `trigger-event-review` | Confirmed in Accountants kit |
-| `ongoing-cdd-monitoring` | Pattern only |
-| `reportable-matter-working` | Pattern only |
-| `effectiveness-onboarding` | Confirmed in Accountants kit |
-| `effectiveness-ttr` | Confirmed in Accountants kit |
-| `effectiveness-cdd` | Pattern only |
-| `effectiveness-ongoing-monitoring` | Pattern only |
-| `effectiveness-smr` | Pattern only |
-| `effectiveness-ifti` | Pattern only |
-| `effectiveness-training` | Pattern only |
-| `effectiveness-recordkeeping` | Pattern only |
-| `effectiveness-governance` | Pattern only |
-| `independent-evaluation-checklist` | Pattern only |
-| All 16 `onboarding-{conv,other}-*` and `initial-cdd-{conv,other}-*` entries | Pattern only — AUSTRAC splits forms by service line × customer type |
+| `assign-responsibilities` | Legal profession - Personnel forms - Assign responsibilities form - January 2026.docx |
+| `amlctf-roles` | Legal profession - Personnel forms - AMLCTF roles form - January 2026.docx |
+| `pdd-compliance-officer` | Legal profession - Personnel forms - Personnel due diligence for AMLCTF compliance officer form - January 2026.docx |
+| `pdd-general-staff` | Legal profession - Personnel forms - Personnel due diligence form - January 2026.docx |
+| `pdd-co-equals-governing-body` | Legal profession - Personnel forms - Personnel due diligence where the compliance officer and governing body are the same person form - January 2026.docx |
+
+### Step 2 — Customer forms — Onboarding (8)
+
+Legal profession kit covers "other professional services". Conveyancers kit is
+used for conveyancing transactions.
+
+| Catalogue id | AUSTRAC filename |
+|---|---|
+| `onboarding-other-IndividualSoleTrader` | Legal profession - Customer forms - Onboarding form - Individual or sole trader - January 2026.docx |
+| `onboarding-other-BodyCorporatePartnershipAssoc` | Legal profession - Customer forms - Onboarding form - Body corporate, partnership or unincorporated association -January 2026.docx |
+| `onboarding-other-Trust` | Legal profession - Customer forms - Onboarding form - Trust - January 2026.docx |
+| `onboarding-other-Government` | Legal profession - Customer forms - Onboarding form - Government body - January 2026.docx |
+| `onboarding-conv-IndividualSoleTrader` | Conveyancers - Customer forms - Onboarding form - Individual or sole trader - January 2026.docx |
+| `onboarding-conv-BodyCorporatePartnershipAssoc` | Conveyancers - Customer forms - Onboarding form - Body corporate, partnership or unincorporated association - January 2026.docx |
+| `onboarding-conv-Trust` | Conveyancers - Customer forms - Onboarding form - trust - January 2026.docx |
+| `onboarding-conv-Government` | Conveyancers - Customer forms - Onboarding form - Government body - January 2026.docx |
+
+### Step 2 — Customer forms — Initial CDD (8)
+
+| Catalogue id | AUSTRAC filename |
+|---|---|
+| `initial-cdd-other-IndividualSoleTrader` | Legal profession - Customer forms - Initial customer due diligence form - Individual or sole trader - January 2026.docx |
+| `initial-cdd-other-BodyCorporatePartnershipAssoc` | Legal profession - Customer forms - Initial customer due diligence form - Body corporate, partnership or association - January 2026.docx |
+| `initial-cdd-other-Trust` | Legal profession - Customer forms - Initial customer due diligence form - Trust - January 2026.docx |
+| `initial-cdd-other-Government` | Legal profession - Customer forms - Initial customer due diligence form - Government body - January 2026.docx |
+| `initial-cdd-conv-IndividualSoleTrader` | Conveyancers - Customer forms - Initial customer due diligence form - Individual or sole trader - January 2026.docx |
+| `initial-cdd-conv-BodyCorporatePartnershipAssoc` | Conveyancers - Customer forms - Initial customer due diligence form - Body corporate, partnership or association - January 2026.docx |
+| `initial-cdd-conv-Trust` | Conveyancers - Customer forms - Initial customer due diligence form - Trust - January 2026.docx |
+| `initial-cdd-conv-Government` | Conveyancers - Customer forms - Initial customer due diligence form - Government body - January 2026.docx |
+
+### Step 2 — Customer forms — Lifecycle (7)
+
+| Catalogue id | AUSTRAC filename |
+|---|---|
+| `enhanced-cdd-form` | Legal profession - Customer forms - Enhanced CDD form - January 2026.docx |
+| `escalation-form` | Legal profession - Customer forms - Escalation form - January 2026.docx |
+| `escalations-register` | Legal profession - Customer forms - Escalations register - January 2026.docx |
+| `unusual-activity-info` | Legal profession - Customer forms - Unusual activity report information form - January 2026.docx |
+| `unusual-activity-review` | Legal profession - Customer forms - Unusual activity report review form - January 2026.docx |
+| `trigger-event-review` | Legal profession - Customer forms - Trigger event review and update form - January 2026.docx |
+| `periodic-review` | Legal profession - Customer forms - Periodic review and update form - January 2026.docx |
+| `request-to-verify` | Conveyancers - Customer forms - Request to verify information - January 2026.docx |
+
+### Step 3 — Maintain program forms (10)
+
+| Catalogue id | AUSTRAC filename |
+|---|---|
+| `maintain-program` | Legal profession - Maintain program forms - Maintain your AMLCTF program form - January 2026.docx |
+| `annual-governing-report` | Legal profession - Maintain program forms - Annual report to the governing body form - January 2026.docx |
+| `effectiveness-onboarding` | Legal profession - Maintain program forms - Client onboarding effectiveness check form - January 2026.docx |
+| `effectiveness-enhanced-cdd` | Legal profession - Maintain program forms - Enhanced CDD effectiveness check form - January 2026.docx |
+| `effectiveness-smr` | Legal profession - Maintain program forms - SMR effectiveness check form - January 2026.docx |
+| `effectiveness-ttr` | Legal profession - Maintain program forms - TTR effectiveness check form - January 2026.docx |
+| `effectiveness-cbm` | Legal profession - Maintain program forms - CBM reporting effectiveness check form - January 2026.docx |
+| `effectiveness-co-sm` | Legal profession - Maintain program forms - Compliance officer and senior manager effectiveness check form - January 2026.docx |
+| `effectiveness-periodic-summary` | Legal profession - Maintain program forms - Periodic effectiveness testing summary form - January 2026.docx |
+| `independent-evaluation` | Legal profession - Maintain program forms - Independent evaluation response form - January 2026.docx |
+
+## Catalogue entries removed in v0.2.0
+
+The following entries were in the v0.1.0 catalogue as "extrapolated from
+parallel kits" but are not present in the actual AUSTRAC Legal profession
+library. They have been removed:
+
+- `training-records` — no separate Legal profession training records form
+- `final-onboarding-checks` — folded into the onboarding forms themselves
+- `ongoing-cdd-monitoring` — replaced by `periodic-review`
+- `reportable-matter-working` — replaced by `unusual-activity-info` / `unusual-activity-review`
+- `effectiveness-cdd` — replaced by `effectiveness-enhanced-cdd`
+- `effectiveness-ongoing-monitoring` — replaced by `effectiveness-periodic-summary`
+- `effectiveness-ifti` — no IFTI-specific check; `effectiveness-cbm` covers cross-border movement
+- `effectiveness-training` — no separate training effectiveness check
+- `effectiveness-recordkeeping` — no separate recordkeeping effectiveness check
+- `effectiveness-governance` — renamed to `effectiveness-co-sm`
+- `independent-evaluation-checklist` — renamed to `independent-evaluation`
+- 3 reference PDFs (`ref-*`) — removed pending confirmation of current URLs
 
 ## Defaults requiring re-verification on Rules amendment
 
@@ -57,8 +117,8 @@ on every AML/CTF Rules amendment.
 | Default | Value | Source |
 |---|---|---|
 | Beneficial-owner threshold | 25% | AML/CTF Rules 2025 |
-| SMR window — terrorism financing | Within 24 hours | AML/CTF Act 2006 |
-| SMR window — other suspicions | Within 3 business days | AML/CTF Act 2006 |
+| SMR window — terrorism financing | Within 24 hours | AML/CTF Act 2006 s 41 |
+| SMR window — other suspicions | Within 3 business days | AML/CTF Act 2006 s 41 |
 | TTR window | Within 10 business days | AML/CTF Act 2006 |
 | IFTI window | Within 10 business days | AML/CTF Act 2006 |
 | TTR threshold | A$10,000 in physical currency | AML/CTF Act 2006 |
@@ -73,8 +133,8 @@ on every AML/CTF Rules amendment.
 ## How to contribute verification
 
 1. Open the AUSTRAC document library URL listed in `README.md`.
-2. For each catalogue entry in the table above, confirm the exact title and
-   record the AUSTRAC URL where it appears.
-3. Update `DOCUMENT_CATALOGUE` in `index.html` with the verified title.
-4. Move the catalogue id from "Extrapolated" to "Verified" in this file.
-5. Open a PR with both changes.
+2. Cross-check `vendor/templates/manifest.json` against any newly published
+   AUSTRAC files.
+3. If AUSTRAC publishes a new release: re-run `vendor/templates/_bundle.ps1`
+   after dropping the new files into `./austrac/`, bump `AUSTRAC_KIT_RELEASE`
+   in `index.html`, and update this file.

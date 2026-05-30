@@ -114,39 +114,34 @@
       padding: 22px;
     }
 
-    .topbar {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 16px;
-      margin-bottom: 18px;
-    }
-
-    .notice, .status-card {
+    .summary {
       border: 1px solid var(--line);
       background: var(--paper);
       border-radius: 14px;
-      padding: 15px 16px;
+      padding: 16px 18px;
       box-shadow: var(--shadow);
+      margin-bottom: 18px;
     }
 
-    .status-card {
-      display: grid;
-      gap: 8px;
-      align-content: start;
-    }
+    .summary p { margin: 0; font-size: 14px; }
+    .summary p + p { margin-top: 8px; }
 
-    .status-line {
+    .summary-status {
       display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      border-bottom: 1px solid #eee5d7;
-      padding-bottom: 7px;
-      font-size: 14px;
+      flex-wrap: wrap;
+      gap: 8px 14px;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px dashed var(--line);
+      font-size: 13px;
+      align-items: center;
     }
 
-    .status-line:last-child {
-      border-bottom: 0;
-      padding-bottom: 0;
+    .summary-status .summary-status-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--muted);
     }
 
     .pill {
@@ -190,11 +185,17 @@
       background: var(--panel);
       border: 1px solid var(--line);
       border-radius: 14px;
-      padding: 12px;
+      padding: 14px 12px;
       height: fit-content;
       position: sticky;
       top: 14px;
       box-shadow: var(--shadow);
+    }
+
+    .nav-step {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
     }
 
     nav button {
@@ -204,7 +205,6 @@
       gap: 10px;
       text-align: left;
       padding: 10px 12px;
-      margin: 3px 0;
       border: 0;
       border-radius: 10px;
       background: transparent;
@@ -212,6 +212,8 @@
       cursor: pointer;
       font: inherit;
       font-size: 14px;
+      position: relative;
+      z-index: 1;
     }
 
     nav button:hover { background: #f5f0e7; }
@@ -223,8 +225,8 @@
     }
 
     .step-no {
-      width: 24px;
-      height: 24px;
+      width: 26px;
+      height: 26px;
       border-radius: 50%;
       display: inline-grid;
       place-items: center;
@@ -233,11 +235,46 @@
       font-size: 12px;
       font-weight: 800;
       flex: 0 0 auto;
+      border: 2px solid transparent;
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
     }
 
     nav button.active .step-no {
       background: var(--accent);
       color: white;
+    }
+
+    nav button.visited .step-no {
+      background: white;
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .nav-arrow {
+      align-self: center;
+      display: block;
+      width: 2px;
+      height: 14px;
+      margin: 2px 0;
+      background: var(--line);
+      position: relative;
+    }
+
+    .nav-arrow::after {
+      content: "";
+      position: absolute;
+      bottom: -1px;
+      left: 50%;
+      width: 7px;
+      height: 7px;
+      border-right: 2px solid var(--accent);
+      border-bottom: 2px solid var(--accent);
+      transform: translateX(-50%) rotate(45deg);
+      transform-origin: center;
+    }
+
+    .nav-arrow.active {
+      background: var(--accent);
     }
 
     section.card {
@@ -474,8 +511,235 @@
 
     .tag-list code { font-size: 11.5px; }
 
+    /* ---- Sole-practitioner tick + propagated fields ---- */
+    .sole-prac-tick {
+      margin: 12px 0 18px;
+      padding: 12px 14px;
+      background: #f9f4e9;
+      border: 1px dashed var(--accent);
+      border-radius: 10px;
+      font-size: 14px;
+    }
+    .sole-prac-tick strong { color: var(--accent-dark); }
+    .sole-prac-tick .fineprint { margin-top: 6px; }
+
+    [data-sole-prac-locked="true"] {
+      background: #f5f1ea !important;
+      color: var(--muted);
+      cursor: not-allowed;
+    }
+
+    .sole-prac-locked-note {
+      display: none;
+      font-size: 12px;
+      color: var(--accent-dark);
+      margin-top: 4px;
+      font-style: italic;
+    }
+
+    body.sole-prac-on .sole-prac-locked-note { display: block; }
+
+    /* ---- CDD tick-box question groups ---- */
+    .cdd-group {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 14px 16px;
+      margin: 14px 0;
+      background: #fbf8f1;
+    }
+
+    .cdd-group h4 {
+      margin: 0 0 4px;
+      color: var(--accent-dark);
+    }
+
+    .cdd-group .cdd-source {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .cdd-options {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 4px 14px;
+      margin-bottom: 10px;
+    }
+
+    .cdd-options label {
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 4px 0;
+    }
+
+    .cdd-options input { margin-top: 4px; }
+
+    .cdd-other-row {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .cdd-other-row input[type="text"] { padding: 7px 10px; }
+
+    .cdd-notes-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 4px;
+    }
+
+    /* ---- Compliance dashboard (step 13) ---- */
+    .dash-header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      align-items: center;
+      padding-bottom: 16px;
+      margin-bottom: 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .dash-header h2 { margin: 0; }
+    .dash-header .dash-meta { font-size: 13px; color: var(--muted); text-align: right; }
+    .dash-header .dash-meta strong { color: var(--ink); }
+
+    .dash-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 16px;
+    }
+
+    .dash-card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      page-break-inside: avoid;
+    }
+
+    .dash-card.span-2 { grid-column: span 2; }
+    @media (max-width: 1100px) { .dash-card.span-2 { grid-column: span 1; } }
+
+    .dash-card-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .dash-card h3 {
+      margin: 0;
+      font-size: 15px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent-dark);
+    }
+
+    .dash-card .edit-link {
+      font-size: 12px;
+      color: var(--blue);
+      text-decoration: none;
+      font-weight: 700;
+      cursor: pointer;
+      background: none;
+      border: 0;
+      padding: 0;
+    }
+    .dash-card .edit-link:hover { text-decoration: underline; }
+
+    .dash-row {
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      gap: 6px 12px;
+      font-size: 14px;
+    }
+    .dash-row dt {
+      color: var(--muted);
+      font-weight: 600;
+    }
+    .dash-row dd { margin: 0; }
+
+    .dash-list { padding-left: 18px; margin: 0; font-size: 14px; }
+    .dash-list li { margin: 3px 0; }
+
+    .dash-missing { color: var(--muted); font-style: italic; }
+
+    .dash-deadline {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 8px 0;
+      border-bottom: 1px solid #ece4d7;
+      font-size: 14px;
+    }
+    .dash-deadline:last-child { border-bottom: 0; }
+
+    .dash-countdown {
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .dash-countdown.over { color: var(--red); }
+    .dash-countdown.soon { color: var(--amber); }
+    .dash-countdown.ok { color: var(--green); }
+
+    .dash-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .dash-pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    /* ---- Print stylesheet for the dashboard PDF report ---- */
+    @media print {
+      @page { size: A4; margin: 14mm 12mm; }
+      body { background: white; }
+      header, nav, .summary, .actions, .dash-actions, .edit-link,
+      #suitabilityBanner, .doc-meta button, button { display: none !important; }
+      main { padding: 0 !important; max-width: none !important; }
+      .layout { display: block !important; }
+      section.card { display: none !important; border: 0 !important; box-shadow: none !important; padding: 0 !important; }
+      section.card#dashboard.active,
+      body.printing section.card#dashboard {
+        display: block !important;
+        box-shadow: none !important;
+        border: 0 !important;
+        padding: 0 !important;
+      }
+      .dash-card { break-inside: avoid; box-shadow: none !important; }
+      .dash-card.span-2 { grid-column: span 2 !important; }
+      .dash-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 10px !important; }
+      .dash-header { page-break-after: avoid; }
+      .pill { border: 1px solid #ccc; }
+      a { color: inherit; text-decoration: none; }
+      .callout, .callout.warn, .callout.danger {
+        background: white !important;
+        border: 1px solid #999 !important;
+        page-break-inside: avoid;
+      }
+    }
+
+    .print-only { display: none; }
+    @media print { .print-only { display: block; } }
+
     @media (max-width: 980px) {
-      .topbar, .layout, .grid, .grid.three, .two-panel, .template-row {
+      .layout, .grid, .grid.three, .two-panel, .template-row {
         grid-template-columns: 1fr;
       }
       nav { position: static; }
@@ -494,7 +758,7 @@
       its own inputs. Modelled on the January 2026 release; Tranche 2 commencement 1 July 2026.
     </p>
     <p style="margin-top:8px; font-size:12.5px; color:#cdb795">
-      <span id="appVersionTag">v0.1.0 · AUSTRAC starter kit release: January 2026</span>
+      <span id="appVersionTag">v0.2.0 · AUSTRAC starter kit release: January 2026</span>
       · MIT-licensed · Not legal advice · Not affiliated with AUSTRAC
     </p>
   </div>
@@ -505,47 +769,52 @@
     <strong>Suitability flag:</strong> <span id="suitabilityBannerText"></span>
   </div>
 
-  <div class="topbar">
-    <div class="notice">
-      <strong>Local-only:</strong> this file does not upload client or practice information.
-      Drafts are autosaved to this browser; templates are cached in IndexedDB and never leave the device.
-      Export progress as JSON for portability. <span class="muted">Not legal advice — does not decide compliance, identify customers, screen sanctions, or lodge AUSTRAC reports.</span>
-    </div>
-
-    <div class="status-card" aria-live="polite">
-      <div class="status-line">
-        <span>Document engine</span>
-        <span id="docEngineStatus" class="pill warn">Checking…</span>
-      </div>
-      <div class="status-line">
-        <span>Suitability</span>
-        <span id="suitabilityStatus" class="pill neutral">Not assessed</span>
-      </div>
-      <div class="status-line">
-        <span>Templates attached</span>
-        <span id="templateCount" class="pill neutral">0</span>
-      </div>
-      <div class="status-line">
-        <span>Autosave</span>
-        <span class="pill ok">Browser localStorage</span>
-      </div>
+  <div class="summary">
+    <p>
+      <strong>How this works.</strong> Work through the 13 steps on the left. Your answers
+      stay in this browser — nothing is uploaded. Step 13 is your live compliance dashboard
+      and the source of the point-in-time PDF report.
+    </p>
+    <p class="muted small">
+      Not legal advice. Not affiliated with AUSTRAC. The tool does not decide compliance,
+      verify identity, screen sanctions, or lodge AUSTRAC reports — those remain with the
+      practice. See <a href="DISCLAIMER.md">DISCLAIMER.md</a>.
+    </p>
+    <div class="summary-status" aria-live="polite">
+      <span class="summary-status-item">Document engine <span id="docEngineStatus" class="pill warn">Checking…</span></span>
+      <span class="summary-status-item">Suitability <span id="suitabilityStatus" class="pill neutral">Not assessed</span></span>
+      <span class="summary-status-item">Templates <span id="templateCount" class="pill neutral">0</span></span>
+      <span class="summary-status-item">Autosave <span class="pill ok">Browser localStorage</span></span>
     </div>
   </div>
 
   <div class="layout">
     <nav aria-label="Wizard steps">
-      <button class="active" data-step="start"><span class="step-no">1</span> Start</button>
-      <button data-step="suitability"><span class="step-no">2</span> Suitability check</button>
-      <button data-step="practice"><span class="step-no">3</span> Practice profile</button>
-      <button data-step="governance"><span class="step-no">4</span> Governance &amp; personnel</button>
-      <button data-step="services"><span class="step-no">5</span> Designated services</button>
-      <button data-step="clients"><span class="step-no">6</span> Clients &amp; risk assessment</button>
-      <button data-step="cdd"><span class="step-no">7</span> CDD, screening &amp; monitoring</button>
-      <button data-step="reporting"><span class="step-no">8</span> Reporting, records &amp; training</button>
-      <button data-step="dates"><span class="step-no">9</span> Key dates</button>
-      <button data-step="documents"><span class="step-no">10</span> Documents</button>
-      <button data-step="templates"><span class="step-no">11</span> Templates</button>
-      <button data-step="generate"><span class="step-no">12</span> Generate / save</button>
+      <div class="nav-step"><button class="active" data-step="start"><span class="step-no">1</span> Start</button></div>
+      <div class="nav-arrow" aria-hidden="true"></div>
+      <div class="nav-step"><button data-step="suitability"><span class="step-no">2</span> Suitability check</button></div>
+      <div class="nav-arrow" aria-hidden="true"></div>
+      <div class="nav-step"><button data-step="practice"><span class="step-no">3</span> Practice profile</button></div>
+      <div class="nav-arrow" aria-hidden="true"></div>
+      <div class="nav-step"><button data-step="governance"><span class="step-no">4</span> Governance &amp; personnel</button></div>
+      <div class="nav-arrow" aria-hidden="true"></div>
+      <div class="nav-step"><button data-step="services"><span class="step-no">5</span> Designated services</button></div>
+      <div class="nav-arrow" aria-hidden="true"></div>
+      <div class="nav-step"><button data-step="clients"><span class="step-no">6</span> Clients &amp; risk assessment</button></div>
+      <div class="nav-arrow" aria-hidden="true"></div>
+      <div class="nav-step"><button data-step="cdd"><span class="step-no">7</span> CDD, screening &amp; monitoring</button></div>
+      <div class="nav-arrow" aria-hidden="true"></div>
+      <div class="nav-step"><button data-step="reporting"><span class="step-no">8</span> Reporting, records &amp; training</button></div>
+      <div class="nav-arrow" aria-hidden="true"></div>
+      <div class="nav-step"><button data-step="dates"><span class="step-no">9</span> Key dates</button></div>
+      <div class="nav-arrow" aria-hidden="true"></div>
+      <div class="nav-step"><button data-step="documents"><span class="step-no">10</span> Documents</button></div>
+      <div class="nav-arrow" aria-hidden="true"></div>
+      <div class="nav-step"><button data-step="templates"><span class="step-no">11</span> Templates</button></div>
+      <div class="nav-arrow" aria-hidden="true"></div>
+      <div class="nav-step"><button data-step="generate"><span class="step-no">12</span> Generate / save</button></div>
+      <div class="nav-arrow" aria-hidden="true"></div>
+      <div class="nav-step"><button data-step="dashboard"><span class="step-no">13</span> Compliance dashboard</button></div>
     </nav>
 
     <div>
@@ -789,11 +1058,31 @@
           </div>
         </div>
 
+        <div class="sole-prac-tick">
+          <label class="checkrow" style="margin:0">
+            <input type="checkbox" id="solePracOneTick" data-bind />
+            <span>
+              <strong>Sole practitioner — this person fills all three AML/CTF roles.</strong>
+              Tick if you are the only person in the practice. The name above will be auto-assigned
+              to Senior manager, AML/CTF Compliance Officer, and every functional ownership role
+              below; those fields will be locked.
+            </span>
+          </label>
+          <div class="fineprint">
+            AUSTRAC explicitly contemplates one-person practices where the same individual is
+            the governing body, the senior manager and the Compliance Officer. The kit ships a
+            dedicated "CO equals governing body" personnel due diligence form, which will be
+            included automatically when this is ticked. Untick at any time to edit each field
+            independently — your values are preserved.
+          </div>
+        </div>
+
         <h3>Senior manager</h3>
         <div class="grid">
           <div>
             <label class="field-label" for="seniorManagerName">Senior manager (approves the program)</label>
             <input id="seniorManagerName" type="text" placeholder="Full name" data-bind />
+            <div class="sole-prac-locked-note">Auto-filled from sole-practitioner attestation.</div>
           </div>
           <div>
             <label class="field-label" for="seniorManagerRole">Role/title</label>
@@ -810,6 +1099,7 @@
           <div>
             <label class="field-label" for="complianceOfficer">Name</label>
             <input id="complianceOfficer" type="text" placeholder="Full name" data-bind />
+            <div class="sole-prac-locked-note">Auto-filled from sole-practitioner attestation.</div>
           </div>
           <div>
             <label class="field-label" for="complianceOfficerRole">Role/title</label>
@@ -842,26 +1132,32 @@
           <div>
             <label class="field-label" for="onboardingOwner">Client onboarding owner</label>
             <input id="onboardingOwner" type="text" placeholder="Name or role" data-bind />
+            <div class="sole-prac-locked-note">Auto-filled from sole-practitioner attestation.</div>
           </div>
           <div>
             <label class="field-label" for="escalationOwner">Escalation owner</label>
             <input id="escalationOwner" type="text" placeholder="Name or role" data-bind />
+            <div class="sole-prac-locked-note">Auto-filled from sole-practitioner attestation.</div>
           </div>
           <div>
             <label class="field-label" for="monitoringOwner">Ongoing monitoring owner</label>
             <input id="monitoringOwner" type="text" placeholder="Name or role" data-bind />
+            <div class="sole-prac-locked-note">Auto-filled from sole-practitioner attestation.</div>
           </div>
           <div>
             <label class="field-label" for="recordkeepingOwner">Recordkeeping owner</label>
             <input id="recordkeepingOwner" type="text" placeholder="Name or role" data-bind />
+            <div class="sole-prac-locked-note">Auto-filled from sole-practitioner attestation.</div>
           </div>
           <div>
             <label class="field-label" for="trainingOwner">Training owner</label>
             <input id="trainingOwner" type="text" placeholder="Name or role" data-bind />
+            <div class="sole-prac-locked-note">Auto-filled from sole-practitioner attestation.</div>
           </div>
           <div>
             <label class="field-label" for="reportingOwner">SMR / TTR / IFTI reporting owner</label>
             <input id="reportingOwner" type="text" placeholder="Name or role" data-bind />
+            <div class="sole-prac-locked-note">Auto-filled from sole-practitioner attestation.</div>
           </div>
         </div>
 
@@ -1022,9 +1318,9 @@
       <section id="cdd" class="card">
         <h2>CDD, screening &amp; monitoring</h2>
         <p class="muted small">
-          The starter kit's policy and process documents must spell out how the practice
-          performs initial, simplified, enhanced and ongoing CDD, who screens for PEPs and
-          sanctions, how source of funds/wealth is assessed, and how tipping-off is avoided.
+          Tick the controls your practice actually applies. Each group reflects the
+          options AUSTRAC guidance enumerates. Use <em>Other</em> for anything not listed
+          and the optional notes field for narrative the form needs to capture verbatim.
         </p>
 
         <div class="grid">
@@ -1039,32 +1335,206 @@
           </div>
         </div>
 
-        <h4>Initial CDD</h4>
-        <textarea id="cddInitialApproach" placeholder="What KYC is collected and verified before any designated service is provided, by whom, and how it is documented." data-bind></textarea>
+        <!-- ===== Initial CDD ===== -->
+        <div class="cdd-group">
+          <h4>Initial CDD — what is collected and verified</h4>
+          <div class="cdd-source">Source: AML/CTF Act 2006 s 28; AML/CTF Rules 2025 Pt 2.</div>
+          <div class="cdd-options">
+            <label><input type="checkbox" id="cddInitial_fullName" data-bind /> Full legal name</label>
+            <label><input type="checkbox" id="cddInitial_dob" data-bind /> Date of birth</label>
+            <label><input type="checkbox" id="cddInitial_address" data-bind /> Residential address</label>
+            <label><input type="checkbox" id="cddInitial_photoId" data-bind /> Government photo ID (passport / driver licence)</label>
+            <label><input type="checkbox" id="cddInitial_electronicVerify" data-bind /> Reliable independent electronic source (e.g. DVS)</label>
+            <label><input type="checkbox" id="cddInitial_beneficialOwners" data-bind /> Beneficial ownership mapped (25%+ owners / controllers)</label>
+            <label><input type="checkbox" id="cddInitial_purpose" data-bind /> Purpose and intended nature of the engagement</label>
+            <label><input type="checkbox" id="cddInitial_sourceOfFunds" data-bind /> Source of funds for the transaction</label>
+            <label><input type="checkbox" id="cddInitial_riskRating" data-bind /> Customer risk rating assigned</label>
+          </div>
+          <div class="cdd-other-row">
+            <label for="cddInitial_otherText" style="font-weight:600">Other:</label>
+            <input id="cddInitial_otherText" type="text" placeholder="Specify any other initial-CDD step" data-bind />
+          </div>
+          <div class="cdd-notes-label">Additional notes (optional)</div>
+          <textarea id="cddInitialApproach" placeholder="Narrative detail: by whom, where recorded, exceptions." data-bind></textarea>
+        </div>
 
-        <h4>Simplified CDD</h4>
-        <textarea id="cddSimplifiedApproach" placeholder="When the practice applies simplified CDD (low risk only, per the Rules) and what reduced steps are taken." data-bind></textarea>
+        <!-- ===== Simplified CDD ===== -->
+        <div class="cdd-group">
+          <h4>Simplified CDD — when applied</h4>
+          <div class="cdd-source">Source: AML/CTF Rules 2025 Pt 2 Div 2 (simplified CDD).</div>
+          <div class="cdd-options">
+            <label><input type="checkbox" id="cddSimplified_lowRisk" data-bind /> Customer rated low risk</label>
+            <label><input type="checkbox" id="cddSimplified_listedCo" data-bind /> Listed Australian public company / majority-owned subsidiary</label>
+            <label><input type="checkbox" id="cddSimplified_govBody" data-bind /> Australian government body (Cwlth, state, territory)</label>
+            <label><input type="checkbox" id="cddSimplified_ausFi" data-bind /> Australian-regulated financial institution</label>
+            <label><input type="checkbox" id="cddSimplified_fatfGov" data-bind /> Foreign government from a FATF-compliant jurisdiction</label>
+            <label><input type="checkbox" id="cddSimplified_reducedDocumented" data-bind /> Reduced verification steps documented</label>
+            <label><input type="checkbox" id="cddSimplified_ongoingMonitoring" data-bind /> Ongoing monitoring still applied</label>
+            <label><input type="checkbox" id="cddSimplified_neverApplied" data-bind /> Practice does not apply simplified CDD</label>
+          </div>
+          <div class="cdd-other-row">
+            <label for="cddSimplified_otherText" style="font-weight:600">Other:</label>
+            <input id="cddSimplified_otherText" type="text" placeholder="Specify any other simplified-CDD trigger" data-bind />
+          </div>
+          <div class="cdd-notes-label">Additional notes (optional)</div>
+          <textarea id="cddSimplifiedApproach" placeholder="Narrative detail on when and how simplified CDD is used." data-bind></textarea>
+        </div>
 
-        <h4>Enhanced CDD (mandatory triggers)</h4>
-        <textarea id="cddEnhancedApproach" placeholder="ECDD is mandatory for High-risk customers, foreign PEPs, customers subject to an SMR, and other Rule-prescribed triggers. Describe the extra measures (senior-manager approval, source-of-wealth verification, increased monitoring) and who approves." data-bind></textarea>
+        <!-- ===== Enhanced CDD ===== -->
+        <div class="cdd-group">
+          <h4>Enhanced CDD — measures applied (mandatory triggers)</h4>
+          <div class="cdd-source">Source: AML/CTF Act 2006 s 36; AML/CTF Rules 2025 (foreign PEP, high-risk, post-SMR, etc.).</div>
+          <div class="cdd-options">
+            <label><input type="checkbox" id="cddEnhanced_smApproval" data-bind /> Senior manager approval to commence or continue</label>
+            <label><input type="checkbox" id="cddEnhanced_sourceOfWealth" data-bind /> Source of wealth verified (in addition to source of funds)</label>
+            <label><input type="checkbox" id="cddEnhanced_boIndependent" data-bind /> Independent verification of all beneficial owners</label>
+            <label><input type="checkbox" id="cddEnhanced_adverseMedia" data-bind /> Adverse media / public records check</label>
+            <label><input type="checkbox" id="cddEnhanced_increasedMonitoring" data-bind /> Increased frequency of ongoing monitoring</label>
+            <label><input type="checkbox" id="cddEnhanced_detailedTxnReview" data-bind /> Detailed transaction review</label>
+            <label><input type="checkbox" id="cddEnhanced_customerInterview" data-bind /> Customer interview / additional supporting docs</label>
+            <label><input type="checkbox" id="cddEnhanced_serviceRestriction" data-bind /> Service restricted until ECDD complete</label>
+          </div>
+          <div class="cdd-other-row">
+            <label for="cddEnhanced_otherText" style="font-weight:600">Other:</label>
+            <input id="cddEnhanced_otherText" type="text" placeholder="Specify any other ECDD measure" data-bind />
+          </div>
+          <div class="cdd-notes-label">Additional notes (optional)</div>
+          <textarea id="cddEnhancedApproach" placeholder="Who approves, how ECDD outcomes are recorded, escalation path." data-bind></textarea>
+        </div>
 
-        <h4>Ongoing CDD &amp; monitoring</h4>
-        <textarea id="cddOngoingApproach" placeholder="How the practice keeps customer information current, monitors transactions, applies trigger-event reviews, and continues monitoring even after an SMR (without tipping off)." data-bind></textarea>
+        <!-- ===== Ongoing CDD ===== -->
+        <div class="cdd-group">
+          <h4>Ongoing CDD &amp; monitoring</h4>
+          <div class="cdd-source">Source: AML/CTF Act 2006 s 36; AML/CTF Rules 2025.</div>
+          <div class="cdd-options">
+            <label><input type="checkbox" id="cddOngoing_periodicRefresh" data-bind /> Periodic customer information refresh (cadence by risk rating)</label>
+            <label><input type="checkbox" id="cddOngoing_txnMonitoring" data-bind /> Transaction / file activity monitoring</label>
+            <label><input type="checkbox" id="cddOngoing_triggerReview" data-bind /> Trigger-event review</label>
+            <label><input type="checkbox" id="cddOngoing_sanctionsOngoing" data-bind /> Ongoing sanctions screening</label>
+            <label><input type="checkbox" id="cddOngoing_pepOngoing" data-bind /> Ongoing PEP screening</label>
+            <label><input type="checkbox" id="cddOngoing_adverseMedia" data-bind /> Adverse media monitoring</label>
+            <label><input type="checkbox" id="cddOngoing_postSmr" data-bind /> Post-SMR continued monitoring (without tipping off)</label>
+            <label><input type="checkbox" id="cddOngoing_annualReview" data-bind /> Annual customer file review</label>
+          </div>
+          <div class="cdd-other-row">
+            <label for="cddOngoing_otherText" style="font-weight:600">Other:</label>
+            <input id="cddOngoing_otherText" type="text" placeholder="Specify any other ongoing-CDD measure" data-bind />
+          </div>
+          <div class="cdd-notes-label">Additional notes (optional)</div>
+          <textarea id="cddOngoingApproach" placeholder="Cadence, owner, recording method." data-bind></textarea>
+        </div>
 
-        <h4>PEP screening</h4>
-        <textarea id="pepScreeningProcess" placeholder="Source(s) used (e.g. commercial PEP feed, public-source), cadence, and what happens when a positive hit is found." data-bind></textarea>
+        <!-- ===== PEP screening ===== -->
+        <div class="cdd-group">
+          <h4>PEP screening</h4>
+          <div class="cdd-source">Source: AML/CTF Rules 2025 (foreign PEPs require ECDD).</div>
+          <div class="cdd-options">
+            <label><input type="checkbox" id="pep_commercialDb" data-bind /> Commercial PEP database (Refinitiv, Dow Jones, etc.)</label>
+            <label><input type="checkbox" id="pep_publicSource" data-bind /> Public-source check (registers, news search)</label>
+            <label><input type="checkbox" id="pep_selfDeclaration" data-bind /> Customer self-declaration</label>
+            <label><input type="checkbox" id="pep_atOnboarding" data-bind /> At onboarding for all customers</label>
+            <label><input type="checkbox" id="pep_onTrigger" data-bind /> On trigger event</label>
+            <label><input type="checkbox" id="pep_periodic" data-bind /> Periodic re-screening</label>
+            <label><input type="checkbox" id="pep_familyAssociates" data-bind /> Family / close-associate screening</label>
+            <label><input type="checkbox" id="pep_smApproval" data-bind /> Senior manager approval where PEP confirmed</label>
+          </div>
+          <div class="cdd-other-row">
+            <label for="pep_otherText" style="font-weight:600">Other:</label>
+            <input id="pep_otherText" type="text" placeholder="Specify any other PEP source / process" data-bind />
+          </div>
+          <div class="cdd-notes-label">Additional notes (optional)</div>
+          <textarea id="pepScreeningProcess" placeholder="Tool/source detail, who reviews hits, decision record." data-bind></textarea>
+        </div>
 
-        <h4>Sanctions screening</h4>
-        <textarea id="sanctionsScreeningProcess" placeholder="Process for screening customers and beneficial owners against the DFAT Consolidated List at onboarding and on an ongoing basis." data-bind></textarea>
+        <!-- ===== Sanctions screening ===== -->
+        <div class="cdd-group">
+          <h4>Sanctions screening</h4>
+          <div class="cdd-source">Source: Charter of the United Nations Act 1945; Autonomous Sanctions Act 2011; DFAT Consolidated List.</div>
+          <div class="cdd-options">
+            <label><input type="checkbox" id="sanc_dfat" data-bind /> DFAT Consolidated List (Australia)</label>
+            <label><input type="checkbox" id="sanc_un" data-bind /> UN Security Council Consolidated List</label>
+            <label><input type="checkbox" id="sanc_atOnboarding" data-bind /> At onboarding (customer + beneficial owners)</label>
+            <label><input type="checkbox" id="sanc_prePayment" data-bind /> Before any payment / disbursement</label>
+            <label><input type="checkbox" id="sanc_periodic" data-bind /> Periodic re-screening</label>
+            <label><input type="checkbox" id="sanc_automated" data-bind /> Automated screening tool</label>
+            <label><input type="checkbox" id="sanc_manual" data-bind /> Manual screening</label>
+            <label><input type="checkbox" id="sanc_hitProcedure" data-bind /> Hit-management procedure documented</label>
+          </div>
+          <div class="cdd-other-row">
+            <label for="sanc_otherText" style="font-weight:600">Other:</label>
+            <input id="sanc_otherText" type="text" placeholder="Specify any other sanctions process" data-bind />
+          </div>
+          <div class="cdd-notes-label">Additional notes (optional)</div>
+          <textarea id="sanctionsScreeningProcess" placeholder="Tool name, cadence, owner, escalation on hit." data-bind></textarea>
+        </div>
 
-        <h4>Source of funds / wealth</h4>
-        <textarea id="sourceOfFundsApproach" placeholder="When and how the practice asks for and verifies source of funds and (for ECDD) source of wealth." data-bind></textarea>
+        <!-- ===== Source of funds / wealth ===== -->
+        <div class="cdd-group">
+          <h4>Source of funds / wealth — when asked and how verified</h4>
+          <div class="cdd-source">Source: AML/CTF Rules 2025.</div>
+          <div class="cdd-options">
+            <label><input type="checkbox" id="sof_allOnboarding" data-bind /> For all customers at onboarding</label>
+            <label><input type="checkbox" id="sof_significantTxn" data-bind /> Where transaction value is significant</label>
+            <label><input type="checkbox" id="sof_highRiskEcdd" data-bind /> For all high-risk / ECDD customers</label>
+            <label><input type="checkbox" id="sof_unusualTxn" data-bind /> For unusual transactions</label>
+            <label><input type="checkbox" id="sof_bankStatements" data-bind /> Bank statements reviewed</label>
+            <label><input type="checkbox" id="sof_writtenDeclaration" data-bind /> Customer written declaration</label>
+            <label><input type="checkbox" id="sof_independentVerify" data-bind /> Independent verification (employer letter, tax records, sale contract)</label>
+            <label><input type="checkbox" id="sof_sourceOfWealth" data-bind /> Source of wealth separately verified for ECDD</label>
+          </div>
+          <div class="cdd-other-row">
+            <label for="sof_otherText" style="font-weight:600">Other:</label>
+            <input id="sof_otherText" type="text" placeholder="Specify any other source-of-funds method" data-bind />
+          </div>
+          <div class="cdd-notes-label">Additional notes (optional)</div>
+          <textarea id="sourceOfFundsApproach" placeholder="Documentation, retention, who reviews." data-bind></textarea>
+        </div>
 
-        <h4>Tipping-off controls</h4>
-        <textarea id="tippingOffControls" placeholder="Who knows about SMRs, how communication is restricted, training on tipping-off offence." data-bind></textarea>
+        <!-- ===== Tipping-off controls ===== -->
+        <div class="cdd-group">
+          <h4>Tipping-off controls</h4>
+          <div class="cdd-source">Source: AML/CTF Act 2006 s 123 (criminal offence; up to 2 years imprisonment).</div>
+          <div class="cdd-options">
+            <label><input type="checkbox" id="tip_needToKnow" data-bind /> SMR records restricted to need-to-know personnel</label>
+            <label><input type="checkbox" id="tip_coOnly" data-bind /> Reportable matters discussed only with CO and senior manager</label>
+            <label><input type="checkbox" id="tip_trained" data-bind /> All personnel trained on s 123 offence</label>
+            <label><input type="checkbox" id="tip_encrypted" data-bind /> Encrypted storage of SMR-related records</label>
+            <label><input type="checkbox" id="tip_noCustomerCorr" data-bind /> No SMR detail in correspondence with customer</label>
+            <label><input type="checkbox" id="tip_escalationFlow" data-bind /> Documented escalation flow that limits disclosure</label>
+            <label><input type="checkbox" id="tip_coded" data-bind /> Coded references in matter management system</label>
+            <label><input type="checkbox" id="tip_annualRefresher" data-bind /> Annual refresher on tipping-off prohibition</label>
+          </div>
+          <div class="cdd-other-row">
+            <label for="tip_otherText" style="font-weight:600">Other:</label>
+            <input id="tip_otherText" type="text" placeholder="Specify any other tipping-off control" data-bind />
+          </div>
+          <div class="cdd-notes-label">Additional notes (optional)</div>
+          <textarea id="tippingOffControls" placeholder="Specific people, access controls, training detail." data-bind></textarea>
+        </div>
 
-        <h4>Trigger events</h4>
-        <textarea id="triggerEventApproach" placeholder="Events that trigger a re-CDD or review: change of beneficial ownership, change in services, adverse media, unusual activity." data-bind></textarea>
+        <!-- ===== Trigger events ===== -->
+        <div class="cdd-group">
+          <h4>Trigger events for re-CDD</h4>
+          <div class="cdd-source">Source: AUSTRAC starter kit — Trigger event review and update form.</div>
+          <div class="cdd-options">
+            <label><input type="checkbox" id="trig_boChange" data-bind /> Change of beneficial ownership / control</label>
+            <label><input type="checkbox" id="trig_serviceChange" data-bind /> Change in services provided to customer</label>
+            <label><input type="checkbox" id="trig_adverseMedia" data-bind /> Adverse media identification</label>
+            <label><input type="checkbox" id="trig_unusualActivity" data-bind /> Unusual activity / transaction</label>
+            <label><input type="checkbox" id="trig_smrFiled" data-bind /> SMR filed in respect of customer</label>
+            <label><input type="checkbox" id="trig_becomesPep" data-bind /> Customer becomes a PEP</label>
+            <label><input type="checkbox" id="trig_sanctionsMatch" data-bind /> Sanctions match</label>
+            <label><input type="checkbox" id="trig_riskIncrease" data-bind /> Customer risk rating increases</label>
+            <label><input type="checkbox" id="trig_periodic" data-bind /> Periodic review interval reached</label>
+            <label><input type="checkbox" id="trig_materialChange" data-bind /> Material change in customer circumstances (address, structure, jurisdiction)</label>
+          </div>
+          <div class="cdd-other-row">
+            <label for="trig_otherText" style="font-weight:600">Other:</label>
+            <input id="trig_otherText" type="text" placeholder="Specify any other trigger event" data-bind />
+          </div>
+          <div class="cdd-notes-label">Additional notes (optional)</div>
+          <textarea id="triggerEventApproach" placeholder="How triggers are detected, who actions them, recording method." data-bind></textarea>
+        </div>
 
         <div class="actions">
           <button class="secondary" onclick="go('clients')">Back</button>
@@ -1110,6 +1580,7 @@
           <div>
             <label class="field-label" for="annualComplianceReportOwner">Annual compliance report owner</label>
             <input id="annualComplianceReportOwner" type="text" placeholder="Name or role" data-bind />
+            <div class="sole-prac-locked-note">Auto-filled from sole-practitioner attestation.</div>
           </div>
         </div>
 
@@ -1243,16 +1714,27 @@
       <section id="templates" class="card">
         <h2>Templates</h2>
         <p>
-          Attach a DOCX template for each selected document. Templates are cached in this
-          browser (IndexedDB) and survive a reload; client data is never uploaded.
-          Reference PDFs do not need templates.
+          The bundled AUSTRAC templates load automatically — you only need to attach your
+          own DOCX if you want to override a particular document. Templates are cached in
+          this browser (IndexedDB) and survive a reload; client data never leaves your device.
         </p>
 
+        <div id="bundleStatusBox" class="callout">
+          <strong id="bundleStatusText">Checking bundled templates…</strong>
+          <div class="small muted" id="bundleStatusDetail"></div>
+          <div id="bundleLoadActions" class="actions" style="margin-top:10px; display:none">
+            <button class="primary" onclick="document.getElementById('bundleLoadInput').click()">Load AUSTRAC template pack</button>
+            <input id="bundleLoadInput" type="file" accept=".docx" multiple hidden onchange="loadBundleViaPicker(event)" />
+            <span class="fineprint">Opens a file picker — select every <code>.docx</code> in <code>vendor/templates/</code> (Ctrl+A or ⌘+A).</span>
+          </div>
+        </div>
+
         <div class="callout">
-          <strong>DOCX template tags.</strong> Insert any of the tags below into the Word file
-          where the matching blank appears. Type braces as plain <code>{ }</code> — if Word
-          autocorrects to curly quotes the tag will fail. Tags with no matching field render
-          blank rather than throwing.
+          <strong>DOCX template tags.</strong> Insert any of the tags below into a Word file
+          where the matching blank appears (only needed if you override a bundled template
+          or add a custom one). Type braces as plain <code>{ }</code> — if Word autocorrects
+          to curly quotes the tag will fail. Tags with no matching field render blank rather
+          than throwing.
           <details style="margin-top:8px">
             <summary style="cursor:pointer; font-weight:700">Show all available tags</summary>
             <div id="tagListContainer" class="tag-list" style="margin-top:10px"></div>
@@ -1281,13 +1763,17 @@
           <div class="mini-card">
             <h3>Generate outputs</h3>
             <p class="small muted">
-              If PizZip and Docxtemplater are available and templates are attached, this
-              generates DOCX files (or a ZIP if multiple). Otherwise it generates a fallback
-              text bundle for proof-of-flow testing.
+              Two outputs from one set of inputs:
+              <strong>(a)</strong> DOCX files for each selected document (rendered from your
+              attached templates, or a fallback text bundle); and
+              <strong>(b)</strong> a point-in-time PDF report of the compliance dashboard.
+              Both are generated locally — nothing is uploaded.
             </p>
             <div class="actions">
               <button class="primary" onclick="generateOutputs()">Generate selected documents</button>
-              <button class="secondary" onclick="downloadSaveFile()">Export progress JSON</button>
+              <button class="primary" onclick="generatePdfReport()">Generate PDF report</button>
+              <button class="secondary" onclick="persist(); renderDashboard(); go('dashboard')">View dashboard</button>
+              <button class="secondary" onclick="downloadSaveFile()">Export snapshot (JSON)</button>
               <button class="secondary" onclick="document.getElementById('loadFile').click()">Import progress JSON</button>
               <input id="loadFile" type="file" accept="application/json,.json" hidden onchange="loadSaveFile(event)" />
             </div>
@@ -1312,12 +1798,42 @@
         <pre id="preview" class="snapshot"></pre>
       </section>
 
+      <!-- ============ STEP 13 — COMPLIANCE DASHBOARD ============ -->
+      <section id="dashboard" class="card">
+        <div class="dash-header">
+          <div>
+            <h2 style="margin:0">Compliance dashboard</h2>
+            <div class="muted small">Single-page view of the practice's AML/CTF state. Each card links back to the relevant wizard step for editing. The PDF report renders only this page.</div>
+          </div>
+          <div class="dash-meta">
+            <div><strong id="dashPracticeName">—</strong></div>
+            <div id="dashUpdated">Last updated —</div>
+            <div id="dashAppMeta">—</div>
+          </div>
+        </div>
+
+        <div class="dash-actions">
+          <button class="primary" onclick="generatePdfReport()">Generate point-in-time PDF report</button>
+          <button class="secondary" onclick="renderDashboard()">Refresh dashboard</button>
+          <button class="secondary" onclick="downloadSaveFile()">Export snapshot (JSON)</button>
+        </div>
+
+        <div id="dashGrid" class="dash-grid"></div>
+
+        <div class="print-only" style="margin-top:18px; font-size:11px; color:#444; border-top:1px solid #ccc; padding-top:8px;">
+          Generated by Legal AML Starter Kit Assistant <span id="dashFooterVersion"></span> on <span id="dashFooterDate"></span>.
+          Modelled on AUSTRAC Legal profession program starter kit (<span id="dashFooterRelease"></span>).
+          © AUSTRAC for the Commonwealth of Australia — content reused under Creative Commons licence with attribution.
+          Not legal advice. Not affiliated with AUSTRAC.
+        </div>
+      </section>
+
     </div>
   </div>
 </main>
 
 <script>
-const APP_VERSION = "0.1.0";
+const APP_VERSION = "0.2.0";
 const AUSTRAC_KIT_RELEASE = "January 2026";
 // Date the bundled defaults (SMR/TTR windows, retention, BO threshold, etc.) were
 // last verified against the AML/CTF Rules. Bump on every Rules amendment review.
@@ -1394,6 +1910,101 @@ async function rehydrateTemplates() {
 }
 
 /* ---------------------------------------------------------------
+   Bundled AUSTRAC templates auto-load.
+   Templates live in ./vendor/templates/{id}.docx. When the file is
+   served over http(s) the browser can fetch them on boot. When the
+   user double-clicks index.html (file://) browsers refuse the fetch
+   for security, so we fall back to a one-click bulk-load button
+   that uses the File API. Either way, loaded templates land in
+   templateFiles + IndexedDB exactly like user-attached ones.
+---------------------------------------------------------------- */
+async function tryFetchBundledTemplates() {
+  // Skip ones already attached (user override or previously cached).
+  const targets = DOCUMENT_CATALOGUE.filter(d => !d.reference && !templateFiles.has(d.id));
+  let loaded = 0;
+  let firstError = null;
+  for (const doc of targets) {
+    try {
+      const res = await fetch(`vendor/templates/${doc.id}.docx`);
+      if (!res.ok) { firstError = firstError || ("HTTP " + res.status); continue; }
+      const blob = await res.blob();
+      const file = new File([blob], doc.id + ".docx", { type: DOCX_MIME });
+      templateFiles.set(doc.id, file);
+      idbPut(doc.id, file);
+      loaded++;
+    } catch (e) {
+      firstError = firstError || String(e.message || e);
+    }
+  }
+  return { loaded, firstError, targetCount: targets.length };
+}
+
+async function bootBundledTemplates() {
+  const total = DOCUMENT_CATALOGUE.filter(d => !d.reference).length;
+  const result = await tryFetchBundledTemplates();
+  renderTemplateList();
+  updateTemplateStatus();
+  renderDashboard();
+  updateBundleStatus(result, total);
+}
+
+function updateBundleStatus(result, total) {
+  const box = qs("bundleStatusBox");
+  const text = qs("bundleStatusText");
+  const detail = qs("bundleStatusDetail");
+  const actions = qs("bundleLoadActions");
+  if (!box || !text || !detail || !actions) return;
+
+  const attached = Array.from(templateFiles.keys())
+    .filter(id => DOCUMENT_CATALOGUE.some(d => d.id === id && !d.reference)).length;
+
+  if (attached === total) {
+    text.textContent = `✓ All ${total} AUSTRAC templates loaded`;
+    detail.textContent = "Bundled templates are active. Override any of them by attaching your own .docx below.";
+    actions.style.display = "none";
+    box.className = "callout";
+  } else if (attached > 0) {
+    text.textContent = `${attached} of ${total} templates loaded`;
+    detail.textContent = result && result.firstError
+      ? `Some templates couldn't auto-load (${escapeHtml(result.firstError)}). Use the bulk-load button to attach the rest from /vendor/templates/.`
+      : "Some templates haven't loaded yet.";
+    actions.style.display = "flex";
+    box.className = "callout warn";
+  } else {
+    text.textContent = "Bundled templates not auto-loaded";
+    detail.innerHTML = "Most browsers block <code>fetch()</code> from <code>file://</code>. " +
+      "Either serve the folder via a local web server (e.g. <code>python -m http.server</code>), " +
+      "or click below and select all <code>.docx</code> files in <code>vendor/templates/</code>.";
+    actions.style.display = "flex";
+    box.className = "callout warn";
+  }
+}
+
+async function loadBundleViaPicker(event) {
+  const files = Array.from(event.target.files || []);
+  let matched = 0, unmatched = 0;
+  for (const file of files) {
+    const baseName = file.name.replace(/\.docx$/i, "");
+    const doc = DOCUMENT_CATALOGUE.find(d => d.id === baseName && !d.reference);
+    if (doc) {
+      templateFiles.set(doc.id, file);
+      await idbPut(doc.id, file);
+      matched++;
+    } else {
+      unmatched++;
+    }
+  }
+  event.target.value = "";
+  const total = DOCUMENT_CATALOGUE.filter(d => !d.reference).length;
+  updateBundleStatus({ loaded: matched, targetCount: matched, firstError: null }, total);
+  renderTemplateList();
+  updateTemplateStatus();
+  renderDashboard();
+  refreshRecommendations(false);
+  alert(`Loaded ${matched} template(s).` + (unmatched ? `\n${unmatched} file(s) didn't match a catalogue id and were skipped.` : ""));
+}
+
+/* ---------------------------------------------------------------
    Document catalogue — modelled on AUSTRAC's published Jan 2026
    library structure: Customise guide + Risk assessments + Policy +
    Process, then Personnel forms, Customer forms (split by service
@@ -1424,8 +2035,11 @@ const isSolePractitioner = d => (
 );
 
 // Builds the four (clientType × serviceLine) onboarding/CDD forms.
+// AUSTRAC ships the "other professional services" forms in the Legal profession
+// kit and the conveyancing-specific equivalents in the Conveyancers kit.
 function clientFormFactory(kind /* "onboarding" | "initial-cdd" */, serviceLine /* "conv" | "other" */, clientKey, clientLabel) {
-  const serviceLabel = serviceLine === "conv" ? "Conveyancing" : "Other professional services";
+  const kitPrefix = serviceLine === "conv" ? "Conveyancers" : "Legal profession";
+  const serviceContext = serviceLine === "conv" ? "Conveyancing" : "Other professional services";
   const kindLabel = kind === "onboarding" ? "Onboarding form" : "Initial customer due diligence form";
   const category = kind === "onboarding"
     ? "Step 2 — Customer forms — Onboarding"
@@ -1433,10 +2047,10 @@ function clientFormFactory(kind /* "onboarding" | "initial-cdd" */, serviceLine 
   const id = `${kind}-${serviceLine}-${clientKey}`;
   return {
     id,
-    title: `Legal profession — Customer forms — ${kindLabel} — ${clientLabel} — ${serviceLabel}`,
+    title: `${kitPrefix} — Customer forms — ${kindLabel} — ${clientLabel} (January 2026)`,
     category,
     condition: d => Boolean(d[`client${clientKey}`]) && (serviceLine === "conv" ? hasConveyancing(d) : hasOtherProfServices(d)),
-    reason: `Required because the practice ${serviceLine === "conv" ? "provides conveyancing services" : "provides other professional designated services"} to ${clientLabel.toLowerCase()} clients.`
+    reason: `${serviceContext} — required for ${clientLabel.toLowerCase()} clients (AUSTRAC ${kitPrefix.toLowerCase()} kit).`
   };
 }
 
@@ -1461,7 +2075,7 @@ const DOCUMENT_CATALOGUE = [
   // ---- Spine documents
   {
     id: "customise-guide",
-    title: "Customise the program starter kit guide",
+    title: "Legal profession — Customise the program starter kit guide (January 2026)",
     category: "Step 1 — Spine documents",
     always: true,
     reason: "AUSTRAC's 4-step customisation guide — walks the practice through completing every document in the kit."
@@ -1471,7 +2085,7 @@ const DOCUMENT_CATALOGUE = [
     title: "Legal profession — Policy document (January 2026)",
     category: "Step 1 — Spine documents",
     always: true,
-    reason: "Core AML/CTF policy. Includes governance, CDD, ECDD, escalation, monitoring, reporting, training, recordkeeping and program-review policy."
+    reason: "Core AML/CTF policy. Governance, CDD, ECDD, escalation, monitoring, reporting, training, recordkeeping and program-review policy."
   },
   {
     id: "process-document",
@@ -1498,38 +2112,38 @@ const DOCUMENT_CATALOGUE = [
   // ---- Personnel forms
   {
     id: "assign-responsibilities",
-    title: "Legal profession — Personnel forms — Assign responsibilities (January 2026)",
+    title: "Legal profession — Personnel forms — Assign responsibilities form (January 2026)",
     category: "Step 1 — Personnel forms",
     always: true,
     reason: "Records who is responsible for each AML/CTF function (onboarding, CDD, escalation, monitoring, reporting, training, recordkeeping)."
   },
   {
+    id: "amlctf-roles",
+    title: "Legal profession — Personnel forms — AML/CTF roles form (January 2026)",
+    category: "Step 1 — Personnel forms",
+    always: true,
+    reason: "Defines the AML/CTF roles operating in the practice and the qualifications/seniority expected of each."
+  },
+  {
     id: "pdd-compliance-officer",
-    title: "Legal profession — Personnel forms — Personnel due diligence for AML/CTF Compliance Officer (January 2026)",
+    title: "Legal profession — Personnel forms — Personnel due diligence for AML/CTF compliance officer form (January 2026)",
     category: "Step 1 — Personnel forms",
     always: true,
     reason: "Evidence the Compliance Officer is fit and proper, management-level and Australian-resident."
   },
   {
     id: "pdd-co-equals-governing-body",
-    title: "Legal profession — Personnel forms — Personnel due diligence where the compliance officer and governing body are the same person (January 2026)",
+    title: "Legal profession — Personnel forms — Personnel due diligence where the compliance officer and governing body are the same person form (January 2026)",
     category: "Step 1 — Personnel forms",
     condition: d => isSolePractitioner(d),
     reason: "Sole-practitioner / one-person practice — Compliance Officer and governing body are the same person."
   },
   {
     id: "pdd-general-staff",
-    title: "Legal profession — Personnel forms — Personnel due diligence — general staff (January 2026)",
+    title: "Legal profession — Personnel forms — Personnel due diligence form (general staff) (January 2026)",
     category: "Step 1 — Personnel forms",
     condition: d => !isSolePractitioner(d),
     reason: "Practice has personnel beyond the principal — staff need a fit-and-proper check appropriate to their AML/CTF role."
-  },
-  {
-    id: "training-records",
-    title: "Legal profession — Personnel forms — Training records and acknowledgement (January 2026)",
-    category: "Step 1 — Personnel forms",
-    always: true,
-    reason: "Records initial and refresher AML/CTF training for all personnel performing AML/CTF functions."
   },
 
   // ---- Customer forms — Onboarding + Initial CDD (matrix built below)
@@ -1537,11 +2151,11 @@ const DOCUMENT_CATALOGUE = [
 
   // ---- Customer forms — Lifecycle
   {
-    id: "final-onboarding-checks",
-    title: "Legal profession — Customer forms — Final onboarding checks (January 2026)",
+    id: "enhanced-cdd-form",
+    title: "Legal profession — Customer forms — Enhanced CDD form (January 2026)",
     category: "Step 2 — Customer forms — Lifecycle",
-    condition: d => CLIENT_VARIANTS.some(c => d[`client${c.key}`]),
-    reason: "Validates that all onboarding steps are completed before the designated service is provided."
+    always: true,
+    reason: "Records the additional ECDD measures (source of wealth, senior-manager approval, increased monitoring) applied to high-risk customers, foreign PEPs and post-SMR customers."
   },
   {
     id: "escalation-form",
@@ -1551,11 +2165,25 @@ const DOCUMENT_CATALOGUE = [
     reason: "Escalates a high-risk client or unusual activity to the AML/CTF Compliance Officer. AUSTRAC dis-applies this for one-person practices."
   },
   {
+    id: "escalations-register",
+    title: "Legal profession — Customer forms — Escalations register (January 2026)",
+    category: "Step 2 — Customer forms — Lifecycle",
+    condition: d => !isSolePractitioner(d),
+    reason: "Central log of escalations referred to the Compliance Officer and their outcomes."
+  },
+  {
+    id: "unusual-activity-info",
+    title: "Legal profession — Customer forms — Unusual activity report information form (January 2026)",
+    category: "Step 2 — Customer forms — Lifecycle",
+    always: true,
+    reason: "Captures information about the unusual activity — facts the Compliance Officer needs to decide whether to submit an SMR."
+  },
+  {
     id: "unusual-activity-review",
     title: "Legal profession — Customer forms — Unusual activity report review form (January 2026)",
     category: "Step 2 — Customer forms — Lifecycle",
     always: true,
-    reason: "Documents review of unusual activity and the decision whether to submit an SMR."
+    reason: "Documents the Compliance Officer's review of unusual activity and the decision whether to submit an SMR."
   },
   {
     id: "trigger-event-review",
@@ -1565,116 +2193,90 @@ const DOCUMENT_CATALOGUE = [
     reason: "Records re-CDD on a trigger event — change of beneficial owner, change in services, adverse media, unusual activity."
   },
   {
-    id: "ongoing-cdd-monitoring",
-    title: "Legal profession — Customer forms — Ongoing CDD and monitoring (January 2026)",
+    id: "periodic-review",
+    title: "Legal profession — Customer forms — Periodic review and update form (January 2026)",
     category: "Step 2 — Customer forms — Lifecycle",
     always: true,
-    reason: "Used throughout the customer relationship to monitor activity and keep information current — includes after-SMR monitoring."
+    reason: "Used throughout the customer relationship to keep customer information current via periodic review — replaces a standalone ongoing-CDD form."
   },
   {
-    id: "reportable-matter-working",
-    title: "Legal profession — Customer forms — Reportable matter working form (January 2026)",
+    id: "request-to-verify",
+    title: "Conveyancers — Customer forms — Request to verify information (January 2026)",
     category: "Step 2 — Customer forms — Lifecycle",
-    always: true,
-    reason: "Working record when a reportable matter (SMR, TTR, IFTI) is identified — supports submission via AUSTRAC Online without breaching tipping-off."
+    condition: hasConveyancing,
+    reason: "Conveyancing-only — formal request to a customer (or third party) to provide information to verify identity / beneficial ownership."
   },
 
   // ---- Maintain program forms (Step 3)
   {
+    id: "maintain-program",
+    title: "Legal profession — Maintain program forms — Maintain your AML/CTF program form (January 2026)",
+    category: "Step 3 — Maintain program forms",
+    always: true,
+    reason: "Step 3 spine — records changes to the program and the rationale, feeding the annual report and independent evaluation."
+  },
+  {
+    id: "annual-governing-report",
+    title: "Legal profession — Maintain program forms — Annual report to the governing body form (January 2026)",
+    category: "Step 3 — Maintain program forms",
+    always: true,
+    reason: "12-monthly Compliance Officer report to the governing body required under the Rules."
+  },
+  {
     id: "effectiveness-onboarding",
-    title: "Legal profession — Maintain program forms — Client onboarding effectiveness check (January 2026)",
+    title: "Legal profession — Maintain program forms — Client onboarding effectiveness check form (January 2026)",
     category: "Step 3 — Maintain program forms",
     always: true,
-    reason: "Step 3: tests whether onboarding is operating as designed."
+    reason: "Tests whether onboarding is operating as designed."
   },
   {
-    id: "effectiveness-cdd",
-    title: "Legal profession — Maintain program forms — CDD effectiveness check (January 2026)",
+    id: "effectiveness-enhanced-cdd",
+    title: "Legal profession — Maintain program forms — Enhanced CDD effectiveness check form (January 2026)",
     category: "Step 3 — Maintain program forms",
     always: true,
-    reason: "Step 3: tests initial, simplified, enhanced and ongoing CDD operation."
-  },
-  {
-    id: "effectiveness-ongoing-monitoring",
-    title: "Legal profession — Maintain program forms — Ongoing monitoring effectiveness check (January 2026)",
-    category: "Step 3 — Maintain program forms",
-    always: true,
-    reason: "Step 3: tests trigger-event reviews, ongoing CDD, post-SMR monitoring."
+    reason: "Tests that ECDD is triggered correctly, senior-manager approvals are obtained and source-of-wealth is verified."
   },
   {
     id: "effectiveness-smr",
-    title: "Legal profession — Maintain program forms — SMR effectiveness check (January 2026)",
+    title: "Legal profession — Maintain program forms — SMR effectiveness check form (January 2026)",
     category: "Step 3 — Maintain program forms",
     always: true,
-    reason: "Step 3: tests SMR identification, escalation, submission timeliness."
+    reason: "Tests SMR identification, escalation, submission timeliness and post-SMR monitoring."
   },
   {
     id: "effectiveness-ttr",
-    title: "Legal profession — Maintain program forms — TTR effectiveness check (January 2026)",
+    title: "Legal profession — Maintain program forms — TTR effectiveness check form (January 2026)",
     category: "Step 3 — Maintain program forms",
     condition: d => Boolean(d.handlesCashOver10k),
     reason: "Practice may receive physical currency ≥A$10,000 — TTR applies."
   },
   {
-    id: "effectiveness-ifti",
-    title: "Legal profession — Maintain program forms — IFTI effectiveness check (January 2026)",
+    id: "effectiveness-cbm",
+    title: "Legal profession — Maintain program forms — CBM reporting effectiveness check form (January 2026)",
     category: "Step 3 — Maintain program forms",
-    condition: d => Boolean(d.handlesIntlFundsTransfers),
-    reason: "Practice may send/receive international funds transfer instructions — IFTI applies."
+    condition: d => Boolean(d.handlesIntlFundsTransfers) || Boolean(d.handlesCashOver10k),
+    reason: "Cross-border movement reporting effectiveness — relevant where the practice may receive cash or send/receive international funds transfer instructions."
   },
   {
-    id: "effectiveness-training",
-    title: "Legal profession — Maintain program forms — Training effectiveness check (January 2026)",
-    category: "Step 3 — Maintain program forms",
-    always: true,
-    reason: "Step 3: tests training reach, content currency, acknowledgement."
-  },
-  {
-    id: "effectiveness-recordkeeping",
-    title: "Legal profession — Maintain program forms — Recordkeeping effectiveness check (January 2026)",
+    id: "effectiveness-co-sm",
+    title: "Legal profession — Maintain program forms — Compliance officer and senior manager effectiveness check form (January 2026)",
     category: "Step 3 — Maintain program forms",
     always: true,
-    reason: "Step 3: tests 7-year retention, secure storage, access controls."
+    reason: "Tests CO authority and senior-manager oversight of the program (replaces the older standalone governance check)."
   },
   {
-    id: "effectiveness-governance",
-    title: "Legal profession — Maintain program forms — Governance &amp; Compliance Officer effectiveness check (January 2026)",
+    id: "effectiveness-periodic-summary",
+    title: "Legal profession — Maintain program forms — Periodic effectiveness testing summary form (January 2026)",
     category: "Step 3 — Maintain program forms",
     always: true,
-    reason: "Step 3: tests CO authority and 12-monthly governing-body reporting."
+    reason: "Roll-up summary of the effectiveness checks above — used as input to the annual governing-body report and the independent evaluation."
   },
   {
-    id: "independent-evaluation-checklist",
-    title: "Legal profession — Maintain program forms — Independent evaluation scope and checklist (January 2026)",
+    id: "independent-evaluation",
+    title: "Legal profession — Maintain program forms — Independent evaluation response form (January 2026)",
     category: "Step 3 — Maintain program forms",
     always: true,
-    reason: "Drives the at-least-every-3-years independent evaluation of the entire program (transitional first deadline 30 Jun 2029 – 30 Jun 2030)."
-  },
-
-  // ---- Reference PDFs (informational, not templated)
-  {
-    id: "ref-quick-guide-mltf-lawyers",
-    title: "Reference — ML/TF risk assessment framework quick guide for lawyers (PDF)",
-    category: "Reference (PDF)",
-    always: true,
-    reference: true,
-    reason: "AUSTRAC PDF — companion to the Risk assessment documents."
-  },
-  {
-    id: "ref-co-quick-guide",
-    title: "Reference — Governance quick guide for AML/CTF Compliance Officers (PDF)",
-    category: "Reference (PDF)",
-    always: true,
-    reference: true,
-    reason: "AUSTRAC PDF — companion to the Personnel and Governance forms."
-  },
-  {
-    id: "ref-governance-factsheet",
-    title: "Reference — AML/CTF Governance factsheet (PDF)",
-    category: "Reference (PDF)",
-    always: true,
-    reference: true,
-    reason: "AUSTRAC PDF — companion to the Policy document."
+    reason: "Records the response to the at-least-every-3-years independent evaluation of the entire program (transitional first deadline 30 Jun 2029 – 30 Jun 2030)."
   }
 ];
 
@@ -1686,15 +2288,32 @@ function qsa(selector) { return Array.from(document.querySelectorAll(selector));
 
 function go(stepId) {
   qsa("section.card").forEach(s => s.classList.remove("active"));
-  qsa("nav button").forEach(b => b.classList.remove("active"));
+  qsa("nav button").forEach(b => { b.classList.remove("active"); b.classList.remove("visited"); });
+  qsa(".nav-arrow").forEach(a => a.classList.remove("active"));
   qs(stepId).classList.add("active");
-  document.querySelector(`nav button[data-step="${stepId}"]`).classList.add("active");
+  const navBtn = document.querySelector(`nav button[data-step="${stepId}"]`);
+  if (navBtn) {
+    navBtn.classList.add("active");
+    // Mark every prior step as visited so the chevron trail shows progress.
+    let walker = navBtn.closest(".nav-step");
+    while (walker) {
+      walker = walker.previousElementSibling; // arrow
+      if (!walker) break;
+      walker.classList.add("active");
+      walker = walker.previousElementSibling; // prior step
+      if (walker && walker.querySelector) {
+        const priorBtn = walker.querySelector("button");
+        if (priorBtn) priorBtn.classList.add("visited");
+      }
+    }
+  }
 
   if (stepId === "documents") refreshRecommendations();
   if (stepId === "templates") { renderTemplateList(); renderTagList(); }
   if (stepId === "generate") refreshGenerateGate();
   if (stepId === "suitability") refreshSuitabilityResult();
   if (stepId === "dates") refreshDateAlerts();
+  if (stepId === "dashboard") renderDashboard();
 
   updatePreview();
   persist();
@@ -1707,6 +2326,11 @@ qsa("nav button").forEach(button => {
 qsa("[data-bind]").forEach(el => {
   const eventName = el.type === "checkbox" || el.tagName === "SELECT" ? "change" : "input";
   el.addEventListener(eventName, () => {
+    // Re-propagate the sole-practitioner name when either the tick or the source
+    // name field changes; locked fields then echo the source.
+    if (el.id === "solePracOneTick" || el.id === "governingBodyMembers") {
+      applySolePracMode();
+    }
     refreshRecommendations(false);
     refreshSuitabilityResult();
     refreshDateAlerts();
@@ -1771,6 +2395,7 @@ function applyData(data) {
 
   selectedDocs = new Set(Array.isArray(data.selectedDocuments) ? data.selectedDocuments : []);
   templateFiles = new Map(); // File objects cannot be restored from JSON.
+  applySolePracMode();
   refreshRecommendations(false);
   refreshSuitabilityResult();
   refreshDateAlerts();
@@ -1867,6 +2492,63 @@ function refreshGenerateGate() {
 }
 
 /* ---------------------------------------------------------------
+   Sole-practitioner one-tick role assignment.
+   AUSTRAC's starter kit ships a dedicated "CO equals governing body"
+   PDD form for one-person practices — the same individual fills
+   governing body / senior manager / Compliance Officer / all
+   functional ownership. When the tick is on, propagate the name
+   into every role and lock those fields.
+---------------------------------------------------------------- */
+const SOLE_PRAC_LOCKED_FIELDS = [
+  "seniorManagerName",
+  "complianceOfficer",
+  "onboardingOwner",
+  "escalationOwner",
+  "monitoringOwner",
+  "recordkeepingOwner",
+  "trainingOwner",
+  "reportingOwner",
+  "annualComplianceReportOwner"
+];
+
+function applySolePracMode() {
+  const tick = qs("solePracOneTick");
+  const nameField = qs("governingBodyMembers");
+  if (!tick || !nameField) return;
+  const on = tick.checked;
+  document.body.classList.toggle("sole-prac-on", on);
+
+  if (on) {
+    const name = (nameField.value || "").trim();
+    SOLE_PRAC_LOCKED_FIELDS.forEach(id => {
+      const el = qs(id);
+      if (!el) return;
+      if (name) el.value = name;
+      el.setAttribute("readonly", "readonly");
+      el.setAttribute("data-sole-prac-locked", "true");
+    });
+    const coSame = qs("coSameAsGoverningBody");
+    if (coSame && !coSame.checked) coSame.checked = true;
+    // Default structure/personnelCount if blank so suitability + catalogue line up.
+    const structure = qs("structure");
+    if (structure && !structure.value) structure.value = "sole_practitioner";
+    const personnel = qs("personnelCount");
+    if (personnel && !personnel.value) personnel.value = "1";
+    const gbDesc = qs("governingBodyDescription");
+    if (gbDesc && !gbDesc.value && name) {
+      gbDesc.value = "Sole practitioner — same individual as senior manager and Compliance Officer.";
+    }
+  } else {
+    SOLE_PRAC_LOCKED_FIELDS.forEach(id => {
+      const el = qs(id);
+      if (!el) return;
+      el.removeAttribute("readonly");
+      el.removeAttribute("data-sole-prac-locked");
+    });
+  }
+}
+
+/* ---------------------------------------------------------------
    Date alerts — surface enrolment and CO-notification windows.
 ---------------------------------------------------------------- */
 function refreshDateAlerts() {
@@ -1899,6 +2581,303 @@ function refreshDateAlerts() {
   } else {
     box.style.display = "none";
   }
+}
+
+/* ---------------------------------------------------------------
+   Compliance dashboard (step 13) — single-page state summary.
+   Reads live data via collectData() so what you see is what the
+   wizard currently holds. Each card has an "Edit →" link that
+   jumps to the relevant wizard step.
+---------------------------------------------------------------- */
+const CDD_GROUP_DEFS = [
+  { label: "Initial CDD",        prefix: "cddInitial_",   notes: "cddInitialApproach" },
+  { label: "Simplified CDD",     prefix: "cddSimplified_", notes: "cddSimplifiedApproach" },
+  { label: "Enhanced CDD",       prefix: "cddEnhanced_",  notes: "cddEnhancedApproach" },
+  { label: "Ongoing CDD",        prefix: "cddOngoing_",   notes: "cddOngoingApproach" },
+  { label: "PEP screening",      prefix: "pep_",          notes: "pepScreeningProcess" },
+  { label: "Sanctions screening",prefix: "sanc_",         notes: "sanctionsScreeningProcess" },
+  { label: "Source of funds",    prefix: "sof_",          notes: "sourceOfFundsApproach" },
+  { label: "Tipping-off",        prefix: "tip_",          notes: "tippingOffControls" },
+  { label: "Trigger events",     prefix: "trig_",         notes: "triggerEventApproach" }
+];
+
+function dashOrMissing(value, fallback = "—") {
+  const v = String(value ?? "").trim();
+  return v ? escapeHtml(v) : `<span class="dash-missing">${escapeHtml(fallback)}</span>`;
+}
+
+function dashCard(title, target, contentHtml, span = 1) {
+  const spanCls = span === 2 ? " span-2" : "";
+  const edit = target
+    ? `<button class="edit-link" onclick="go('${escapeHtml(target)}')">Edit →</button>`
+    : "";
+  return `<div class="dash-card${spanCls}">
+    <div class="dash-card-head"><h3>${escapeHtml(title)}</h3>${edit}</div>
+    ${contentHtml}
+  </div>`;
+}
+
+function dashRow(label, value, fallback) {
+  return `<dt>${escapeHtml(label)}</dt><dd>${dashOrMissing(value, fallback || "Not entered")}</dd>`;
+}
+
+function daysBetween(dateStr) {
+  if (!dateStr) return null;
+  const target = new Date(dateStr);
+  if (isNaN(target)) return null;
+  const today = new Date();
+  today.setHours(0,0,0,0);
+  target.setHours(0,0,0,0);
+  return Math.round((target - today) / (1000 * 60 * 60 * 24));
+}
+
+function deadlineRow(label, dateStr) {
+  if (!dateStr) {
+    return `<div class="dash-deadline"><span>${escapeHtml(label)}</span><span class="dash-missing">Not set</span></div>`;
+  }
+  const days = daysBetween(dateStr);
+  const dt = new Date(dateStr).toLocaleDateString("en-AU");
+  let cls = "ok", text = "";
+  if (days === null) { cls = ""; text = ""; }
+  else if (days < 0) { cls = "over"; text = `${Math.abs(days)} day${Math.abs(days)===1?"":"s"} overdue`; }
+  else if (days <= 30) { cls = "soon"; text = `in ${days} day${days===1?"":"s"}`; }
+  else { cls = "ok"; text = `in ${days} day${days===1?"":"s"}`; }
+  return `<div class="dash-deadline">
+    <span>${escapeHtml(label)}<br><span class="muted small">${dt}</span></span>
+    <span class="dash-countdown ${cls}">${escapeHtml(text)}</span>
+  </div>`;
+}
+
+function addDays(dateStr, days) {
+  if (!dateStr) return "";
+  const d = new Date(dateStr);
+  if (isNaN(d)) return "";
+  d.setDate(d.getDate() + days);
+  return d.toISOString().slice(0, 10);
+}
+
+function pillFor(text, kind) {
+  return `<span class="pill ${kind || "neutral"}">${escapeHtml(text)}</span>`;
+}
+
+function cddCoverage(data, def) {
+  const ticked = Object.keys(data).filter(k => k.startsWith(def.prefix) && !k.endsWith("_otherText") && data[k] === true).length;
+  const otherText = String(data[def.prefix + "otherText"] || "").trim();
+  const notes = String(data[def.notes] || "").trim();
+  const score = ticked + (otherText ? 1 : 0) + (notes.length > 30 ? 1 : 0);
+  if (score === 0) return { kind: "bad", text: "Not covered" };
+  if (score <= 2) return { kind: "warn", text: `Partial (${ticked} item${ticked===1?"":"s"})` };
+  return { kind: "ok", text: `Covered (${ticked} item${ticked===1?"":"s"})` };
+}
+
+function listFromBooleans(data, items) {
+  const out = [];
+  items.forEach(([id, label]) => { if (data[id]) out.push(label); });
+  return out;
+}
+
+function renderDashboard() {
+  const grid = qs("dashGrid");
+  if (!grid) return;
+  const data = collectData();
+
+  qs("dashPracticeName").textContent = data.practiceName || "(unnamed practice)";
+  qs("dashUpdated").textContent = "Last updated " + new Date().toLocaleString("en-AU");
+  qs("dashAppMeta").textContent = `v${APP_VERSION} · AUSTRAC kit ${AUSTRAC_KIT_RELEASE}`;
+  const fv = qs("dashFooterVersion"); if (fv) fv.textContent = "v" + APP_VERSION;
+  const fd = qs("dashFooterDate"); if (fd) fd.textContent = new Date().toLocaleDateString("en-AU");
+  const fr = qs("dashFooterRelease"); if (fr) fr.textContent = AUSTRAC_KIT_RELEASE;
+
+  const cards = [];
+
+  // --- Practice
+  cards.push(dashCard("Practice", "practice", `<dl class="dash-row">
+    ${dashRow("Name", data.practiceName)}
+    ${dashRow("ABN/ACN", data.abn)}
+    ${dashRow("Structure", data.structure)}
+    ${dashRow("Personnel", data.personnelCount)}
+    ${dashRow("Primary address", data.primaryAddress)}
+    ${dashRow("AUSTRAC enrolment", data.enrolmentStatus)}
+    ${dashRow("AUSTRAC account", data.austracAccountNumber)}
+  </dl>`));
+
+  // --- Suitability
+  const suit = data.derived || { suitabilityFailures: [], suitabilityUnsure: [], suitabilityOK: false };
+  const suitAnswered = Object.keys(SUITABILITY_LABELS).filter(k => data[k] && data[k] !== "").length;
+  const suitTotal = Object.keys(SUITABILITY_LABELS).length;
+  let suitPill;
+  if (suitAnswered === 0) suitPill = pillFor("Not assessed", "neutral");
+  else if (suit.suitabilityOK && suitAnswered === suitTotal) suitPill = pillFor("All 7 criteria met", "ok");
+  else if (suitAnswered < suitTotal) suitPill = pillFor(`${suitAnswered}/${suitTotal} answered`, "warn");
+  else if (data.suitabilityAcknowledged) suitPill = pillFor("Acknowledged with flags", "warn");
+  else suitPill = pillFor(`${suit.suitabilityFailures.length + suit.suitabilityUnsure.length} flag(s) unacknowledged`, "bad");
+  cards.push(dashCard("Suitability", "suitability", `
+    <div>${suitPill}</div>
+    ${suit.suitabilityFailures.length ? `<div class="small"><strong>Failed:</strong> ${suit.suitabilityFailures.map(escapeHtml).join("; ")}</div>` : ""}
+    ${suit.suitabilityUnsure.length ? `<div class="small"><strong>Unsure:</strong> ${suit.suitabilityUnsure.map(escapeHtml).join("; ")}</div>` : ""}
+    ${suit.suitabilityOK && suitAnswered === suitTotal ? `<div class="small muted">All seven AUSTRAC criteria are satisfied.</div>` : ""}
+  `));
+
+  // --- Governance
+  const solePrac = Boolean(data.solePracOneTick) || suit.isSolePractitioner;
+  cards.push(dashCard("Governance", "governance", `<dl class="dash-row">
+    ${dashRow("Governing body", data.governingBodyDescription)}
+    ${dashRow("Members", data.governingBodyMembers)}
+    ${dashRow("Senior manager", `${data.seniorManagerName || ""}${data.seniorManagerRole ? " (" + data.seniorManagerRole + ")" : ""}`)}
+    ${dashRow("Compliance Officer", `${data.complianceOfficer || ""}${data.complianceOfficerRole ? " (" + data.complianceOfficerRole + ")" : ""}`)}
+    ${dashRow("CO appointed", data.complianceOfficerAppointmentDate)}
+    ${dashRow("AUSTRAC notified", data.austracNotificationDate)}
+    ${dashRow("CO Aus resident", data.coAusResident ? "Yes" : "No")}
+    ${dashRow("Fit & proper attested", data.coFitProper ? "Yes" : "No")}
+    ${dashRow("Sole-prac mode", solePrac ? "Yes — one person fills all three roles" : "No")}
+    ${dashRow("Senior manager approved program", data.seniorManagerApproved ? "Yes" : "No")}
+  </dl>`));
+
+  // --- Designated services
+  const servicesList = listFromBooleans(data, [
+    ["ds1RealEstate", "1. Real estate transactions (conveyancing)"],
+    ["ds2BodyCorporateTxn", "2. Body corporate / legal arrangement transactions"],
+    ["ds3ClientMoney", "3. Receiving / holding client money or property"],
+    ["ds4EquityDebtFinancing", "4. Equity or debt financing"],
+    ["ds5ShelfCompany", "5. Sale / transfer of shelf companies"],
+    ["ds6CreateRestructureEntity", "6. Creating or restructuring entities"],
+    ["ds7ActAsDirectorTrustee", "7. Acting as director / trustee / officer"],
+    ["ds8NomineeShareholder", "8. Acting as nominee shareholder"],
+    ["ds9RegisteredOffice", "9. Providing registered office address"]
+  ]);
+  cards.push(dashCard("Designated services (Table 6)", "services", `
+    <div class="dash-pill-row">
+      ${suit.providesConveyancing ? pillFor("Conveyancing", "ok") : pillFor("No conveyancing", "neutral")}
+      ${suit.providesOtherProfServices ? pillFor("Other professional", "ok") : pillFor("No other prof.", "neutral")}
+    </div>
+    ${servicesList.length ? `<ul class="dash-list">${servicesList.map(s => `<li>${escapeHtml(s)}</li>`).join("")}</ul>` : `<div class="dash-missing">No designated services selected.</div>`}
+  `));
+
+  // --- Customers & risk
+  const clientList = listFromBooleans(data, [
+    ["clientIndividualSoleTrader", "Individual / sole trader"],
+    ["clientBodyCorporatePartnershipAssoc", "Body corporate / partnership / association"],
+    ["clientTrust", "Trust"],
+    ["clientGovernment", "Government body"]
+  ]);
+  const pepList = listFromBooleans(data, [
+    ["pepForeign", "Foreign PEPs"],
+    ["pepDomestic", "Domestic PEPs"],
+    ["pepIntlOrg", "International-organisation PEPs"]
+  ]);
+  const riskKind = r => {
+    if (r === "High") return "bad";
+    if (r === "Medium") return "warn";
+    if (r === "Low") return "ok";
+    return "neutral";
+  };
+  cards.push(dashCard("Customers & risk", "clients", `
+    <div class="small"><strong>Customer types:</strong> ${clientList.length ? clientList.map(escapeHtml).join(", ") : '<span class="dash-missing">None selected</span>'}</div>
+    <div class="small"><strong>PEP exposure:</strong> ${pepList.length ? pepList.map(escapeHtml).join(", ") : '<span class="muted">None ticked</span>'}</div>
+    <div class="dash-pill-row" style="margin-top:6px">
+      ${pillFor("Customer: " + (data.riskCustomer || "—"), riskKind(data.riskCustomer))}
+      ${pillFor("Service: " + (data.riskService || "—"), riskKind(data.riskService))}
+      ${pillFor("Delivery: " + (data.riskDeliveryChannel || "—"), riskKind(data.riskDeliveryChannel))}
+      ${pillFor("Geography: " + (data.riskGeography || "—"), riskKind(data.riskGeography))}
+      ${pillFor("Txn type: " + (data.riskTransactionType || "—"), riskKind(data.riskTransactionType))}
+      ${pillFor("PF: " + (data.riskPF || "—"), riskKind(data.riskPF))}
+    </div>
+    <div style="margin-top:8px"><strong>Overall residual risk:</strong> ${pillFor(data.overallRiskRating || "Not assessed", riskKind(data.overallRiskRating))}</div>
+    ${data.riskAppetite ? `<div class="small muted">Appetite: ${escapeHtml(data.riskAppetite)}</div>` : ""}
+  `, 2));
+
+  // --- CDD coverage
+  const cddRows = CDD_GROUP_DEFS.map(def => {
+    const c = cddCoverage(data, def);
+    return `<div class="dash-deadline"><span>${escapeHtml(def.label)}</span>${pillFor(c.text, c.kind)}</div>`;
+  }).join("");
+  cards.push(dashCard("CDD coverage", "cdd", cddRows));
+
+  // --- Reporting
+  cards.push(dashCard("Reporting", "reporting", `<dl class="dash-row">
+    ${dashRow("Handles cash ≥ A$10k", data.handlesCashOver10k ? "Yes — TTR applies" : "No")}
+    ${dashRow("Sends/receives IFTI", data.handlesIntlFundsTransfers ? "Yes — IFTI applies" : "No")}
+    ${dashRow("SMR method", data.smrSubmissionMethod)}
+    ${dashRow("SMR TF window", data.smrTfWindow)}
+    ${dashRow("SMR other window", data.smrOtherWindow)}
+    ${dashRow("Annual report owner", data.annualComplianceReportOwner)}
+  </dl>`));
+
+  // --- Recordkeeping & training
+  cards.push(dashCard("Recordkeeping & training", "reporting", `<dl class="dash-row">
+    ${dashRow("Retention", data.recordRetentionYears ? data.recordRetentionYears + " years" : "")}
+    ${dashRow("Storage", data.recordStorageMethod)}
+    ${dashRow("Access controls", data.recordAccessControls)}
+    ${dashRow("Training cadence", data.trainingCadence)}
+    ${dashRow("Training records", data.trainingRecordsApproach)}
+    ${dashRow("Training owner", data.trainingOwner)}
+  </dl>`));
+
+  // --- Independent evaluation
+  cards.push(dashCard("Independent evaluation", "reporting", `<dl class="dash-row">
+    ${dashRow("Cadence", data.evaluationCadence)}
+    ${dashRow("First deadline", data.firstEvaluationDeadline)}
+    ${dashRow("Approach", data.evaluatorIndependenceApproach)}
+  </dl>`));
+
+  // --- Key dates (with deadlines)
+  const enrolmentDeadline = addDays(data.firstServiceDate, 28);
+  const coNotifyDeadline = addDays(data.complianceOfficerAppointmentDate, 14);
+  cards.push(dashCard("Key dates & deadlines", "dates", `
+    ${deadlineRow("Tranche 2 commencement", "2026-07-01")}
+    ${deadlineRow("First designated service", data.firstServiceDate)}
+    ${deadlineRow("AUSTRAC enrolment (28 days)", enrolmentDeadline)}
+    ${deadlineRow("AUSTRAC CO notification (14 days)", coNotifyDeadline)}
+    ${deadlineRow("Next CO report to governing body", data.nextCoReportDate)}
+    ${deadlineRow("Next program review", data.reviewDate)}
+    ${deadlineRow("Next training refresh", data.trainingNextDate)}
+    ${deadlineRow("Next risk-assessment review", data.riskAssessmentReviewDate)}
+    ${deadlineRow("First independent evaluation", data.firstEvaluationDeadline)}
+  `, 2));
+
+  // --- Documents & templates
+  const totalRecommended = (data.recommendedDocuments || []).length;
+  const totalSelected = (data.selectedDocuments || []).length;
+  const templatedSelected = (data.selectedDocuments || [])
+    .map(id => DOCUMENT_CATALOGUE.find(d => d.id === id))
+    .filter(d => d && !d.reference);
+  const templateCount = templatedSelected.filter(d => templateFiles.has(d.id)).length;
+  const totalBundleAvailable = DOCUMENT_CATALOGUE.filter(d => !d.reference).length;
+  const totalBundleLoaded = Array.from(templateFiles.keys())
+    .filter(id => DOCUMENT_CATALOGUE.some(d => d.id === id && !d.reference)).length;
+  cards.push(dashCard("Documents & templates", "documents", `<dl class="dash-row">
+    ${dashRow("Recommended", String(totalRecommended))}
+    ${dashRow("Selected", String(totalSelected))}
+    ${dashRow("Templates ready for selected", `${templateCount} of ${templatedSelected.length}`)}
+    ${dashRow("AUSTRAC templates loaded", `${totalBundleLoaded} of ${totalBundleAvailable}`)}
+    ${dashRow("Source kit", AUSTRAC_KIT_RELEASE)}
+  </dl>`));
+
+  // --- Audit metadata
+  cards.push(dashCard("Audit metadata", "", `<dl class="dash-row">
+    ${dashRow("App version", "v" + APP_VERSION)}
+    ${dashRow("AUSTRAC kit release", AUSTRAC_KIT_RELEASE)}
+    ${dashRow("Rules as at", RULES_AS_AT)}
+    ${dashRow("Generated", new Date().toLocaleString("en-AU"))}
+    ${dashRow("Storage", "Local browser only")}
+  </dl>`));
+
+  grid.innerHTML = cards.join("");
+}
+
+/* Print the dashboard as a PDF via the browser. The @media print
+   stylesheet hides everything except #dashboard. The user picks
+   "Save as PDF" in the browser's print dialog. We navigate to the
+   dashboard first so it's the active card. */
+function generatePdfReport() {
+  go("dashboard");
+  renderDashboard();
+  document.body.classList.add("printing");
+  setTimeout(() => {
+    window.print();
+    setTimeout(() => document.body.classList.remove("printing"), 500);
+  }, 100);
+  logOutput("Opened print dialog. Choose 'Save as PDF' to capture the report.");
 }
 
 /* ---------------------------------------------------------------
@@ -2032,11 +3011,17 @@ function renderTemplateList() {
       const div = document.createElement("div");
       div.className = "doc";
       const file = templateFiles.get(doc.id);
+      const isBundled = file && file.name && file.name.startsWith(doc.id);
+      const statusText = file
+        ? (isBundled
+            ? "Using bundled AUSTRAC template (" + escapeHtml(file.name) + "). Attach your own to override."
+            : "Using your template: " + escapeHtml(file.name))
+        : "Attach your own .docx template or leave blank to use the bundled AUSTRAC template.";
       div.innerHTML = `
         <div class="template-row">
           <div>
             <div class="doc-title">${escapeHtml(doc.title)}</div>
-            <div class="small muted">${file ? "Selected: " + escapeHtml(file.name) : "Attach a .docx template, or leave blank to use fallback output."}</div>
+            <div class="small muted">${statusText}</div>
           </div>
           <div>
             <input type="file" accept=".docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document" data-template-for="${escapeHtml(doc.id)}" />
@@ -2339,10 +3324,12 @@ function clearLocal() {
       el.value = el.getAttribute("value");
     }
   });
+  applySolePracMode();
   refreshRecommendations(true);
   refreshSuitabilityResult();
   refreshDateAlerts();
   refreshGenerateGate();
+  renderDashboard();
   go("start");
   logOutput("Local browser save cleared.");
 }
@@ -2417,13 +3404,15 @@ if (versionTag) versionTag.textContent = `v${APP_VERSION} · AUSTRAC starter kit
 // visitors keep whatever they had selected last time (applyData has already run).
 const restored = restore();
 if (!restored) refreshRecommendations(true);
+applySolePracMode();
 refreshSuitabilityResult();
 refreshDateAlerts();
 refreshGenerateGate();
 updateTemplateStatus();
 renderTagList();
 updatePreview();
-rehydrateTemplates();
+rehydrateTemplates().then(() => bootBundledTemplates());
+renderDashboard();
 </script>
 </body>
 </html>
