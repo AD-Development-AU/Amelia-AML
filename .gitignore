@@ -9,6 +9,9 @@ desktop.ini
 *.swp
 *~
 
+# Claude Code agent working state
+.claude/
+
 # Local working files
 *.tmp
 .tmp-*
@@ -19,3 +22,28 @@ practice-*.json
 
 # DOCX templates contributors may stage locally for testing
 templates-local/
+
+# Optimised templates — build intermediate produced by
+# vendor/templates/_optimize.ps1, regenerated on demand.
+vendor/templates-optimised/
+
+# Pre-self-bundling artefact pattern (we now COMMIT the canonical bundle:
+# v0.2.0 onward, the bundle IS the source. Only ignore older variants).
+index-sleek-bundled.html
+
+# Release ZIP is a build artefact — produced by _build-inline.ps1, attached
+# to the GitHub Release by .github/workflows/release-provenance.yml; never
+# committed to the repo (the .html + Where am I.html sources are what's
+# committed, and CI rebuilds the ZIP at tag time).
+aml-starter-kit-v*.zip
+
+# Media inventory working folder (extracted by VERIFIED.md inspection step).
+# Contents are duplicates of bundled-template assets — never commit.
+.media-quarantine/
+.media-inventory.csv
+
+# Local-only archive of pre-v0.2.0 prototypes and browser-saved snapshots.
+# Kept on disk for the maintainer's reference; not shipped to GitHub. The
+# canonical shipping artefact is `aml-starter-kit-v0.2.0.html` in the repo
+# root; everything earlier exists in the git history of the v0.1.0 release.
+archive/

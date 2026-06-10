@@ -1,0 +1,33 @@
+docxtemplater core is © Edgar Hipp, distributed under the MIT licence.
+
+Upstream: https://www.npmjs.com/package/docxtemplater
+Source repository: https://github.com/open-xml-templating/docxtemplater
+Version bundled here: 3.37.11 (see VENDOR.md for SHA-256)
+
+docxtemplater is offered under a dual open-source / commercial model. The
+project's PAID PREMIUM MODULES (loops-pro, image, table, slides, html, etc.)
+are licensed separately under a commercial licence — those modules are NOT
+bundled in this distribution. The artefact in this folder is the MIT-licensed
+core only.
+
+---
+
+MIT License
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

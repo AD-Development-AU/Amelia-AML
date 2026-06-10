@@ -1,128 +1,148 @@
-﻿{
+{
+    "amlctf-roles":  {
+                         "bytes":  78840,
+                         "source":  "Legal profession - Personnel forms - AMLCTF roles form - January 2026.docx"
+                     },
     "annual-governing-report":  {
                                     "bytes":  84926,
                                     "source":  "Legal profession - Maintain program forms - Annual report to the governing body form - January 2026.docx"
                                 },
-    "effectiveness-co-sm":  {
-                                "bytes":  87483,
-                                "source":  "Legal profession - Maintain program forms - Compliance officer and senior manager effectiveness check form - January 2026.docx"
-                            },
-    "ra-conveyancing":  {
-                            "bytes":  986027,
-                            "source":  "Legal profession - Risk assessment - Conveyancing for the legal profession - January 2026.docx"
+    "assign-responsibilities":  {
+                                    "bytes":  82875,
+                                    "source":  "Legal profession - Personnel forms - Assign responsibilities form - January 2026.docx"
+                                },
+    "customise-guide":  {
+                            "bytes":  1166500,
+                            "source":  "Legal profession - Customise guide - January 2026.docx"
                         },
-    "unusual-activity-review":  {
-                                    "bytes":  89790,
-                                    "source":  "Legal profession - Customer forms - Unusual activity report review form - January 2026.docx"
-                                },
-    "initial-cdd-other-Trust":  {
-                                    "bytes":  237822,
-                                    "source":  "Legal profession - Customer forms - Initial customer due diligence form - Trust - January 2026.docx"
-                                },
-    "trigger-event-review":  {
-                                 "bytes":  83446,
-                                 "source":  "Legal profession - Customer forms - Trigger event review and update form - January 2026.docx"
-                             },
-    "initial-cdd-conv-Government":  {
-                                        "bytes":  226154,
-                                        "source":  "Conveyancers - Customer forms - Initial customer due diligence form - Government body - January 2026.docx"
-                                    },
-    "effectiveness-enhanced-cdd":  {
-                                       "bytes":  85254,
-                                       "source":  "Legal profession - Maintain program forms - Enhanced CDD effectiveness check form - January 2026.docx"
-                                   },
     "effectiveness-cbm":  {
                               "bytes":  80077,
                               "source":  "Legal profession - Maintain program forms - CBM reporting effectiveness check form - January 2026.docx"
                           },
-    "unusual-activity-info":  {
-                                  "bytes":  78082,
-                                  "source":  "Legal profession - Customer forms - Unusual activity report information form - January 2026.docx"
-                              },
-    "pdd-general-staff":  {
-                              "bytes":  90936,
-                              "source":  "Legal profession - Personnel forms - Personnel due diligence form - January 2026.docx"
-                          },
-    "onboarding-conv-Trust":  {
-                                  "bytes":  111178,
-                                  "source":  "Conveyancers - Customer forms - Onboarding form - trust - January 2026.docx"
-                              },
+    "effectiveness-co-sm":  {
+                                "bytes":  87483,
+                                "source":  "Legal profession - Maintain program forms - Compliance officer and senior manager effectiveness check form - January 2026.docx"
+                            },
+    "effectiveness-enhanced-cdd":  {
+                                       "bytes":  85254,
+                                       "source":  "Legal profession - Maintain program forms - Enhanced CDD effectiveness check form - January 2026.docx"
+                                   },
+    "effectiveness-onboarding":  {
+                                     "bytes":  87490,
+                                     "source":  "Legal profession - Maintain program forms - Client onboarding effectiveness check form - January 2026.docx"
+                                 },
     "effectiveness-periodic-summary":  {
                                            "bytes":  85243,
                                            "source":  "Legal profession - Maintain program forms - Periodic effectiveness testing summary form - January 2026.docx"
                                        },
-    "ra-other-prof-services":  {
-                                   "bytes":  993276,
-                                   "source":  "Legal profession - Risk assessment - Other professional services - January 2026.docx"
+    "effectiveness-smr":  {
+                              "bytes":  86621,
+                              "source":  "Legal profession - Maintain program forms - SMR effectiveness check form - January 2026.docx"
+                          },
+    "effectiveness-ttr":  {
+                              "bytes":  79450,
+                              "source":  "Legal profession - Maintain program forms - TTR effectiveness check form - January 2026.docx"
+                          },
+    "enhanced-cdd-form":  {
+                              "bytes":  82866,
+                              "source":  "Legal profession - Customer forms - Enhanced CDD form - January 2026.docx"
+                          },
+    "escalation-form":  {
+                            "bytes":  80497,
+                            "source":  "Legal profession - Customer forms - Escalation form - January 2026.docx"
+                        },
+    "escalations-register":  {
+                                 "bytes":  76117,
+                                 "source":  "Legal profession - Customer forms - Escalations register - January 2026.docx"
+                             },
+    "independent-evaluation":  {
+                                   "bytes":  77736,
+                                   "source":  "Legal profession - Maintain program forms - Independent evaluation response form - January 2026.docx"
+                               },
+    "initial-cdd-conv-BodyCorporatePartnershipAssoc":  {
+                                                           "bytes":  234546,
+                                                           "source":  "Conveyancers - Customer forms - Initial customer due diligence form - Body corporate, partnership or association - January 2026.docx"
+                                                       },
+    "initial-cdd-conv-Government":  {
+                                        "bytes":  226154,
+                                        "source":  "Conveyancers - Customer forms - Initial customer due diligence form - Government body - January 2026.docx"
+                                    },
+    "initial-cdd-conv-IndividualSoleTrader":  {
+                                                  "bytes":  196849,
+                                                  "source":  "Conveyancers - Customer forms - Initial customer due diligence form - Individual or sole trader - January 2026.docx"
+                                              },
+    "initial-cdd-conv-Trust":  {
+                                   "bytes":  244280,
+                                   "source":  "Conveyancers - Customer forms - Initial customer due diligence form - Trust - January 2026.docx"
                                },
     "initial-cdd-other-BodyCorporatePartnershipAssoc":  {
                                                             "bytes":  226717,
                                                             "source":  "Legal profession - Customer forms - Initial customer due diligence form - Body corporate, partnership or association - January 2026.docx"
                                                         },
-    "onboarding-other-BodyCorporatePartnershipAssoc":  {
-                                                           "bytes":  115236,
-                                                           "source":  "Legal profession - Customer forms - Onboarding form - Body corporate, partnership or unincorporated association -January 2026.docx"
-                                                       },
-    "onboarding-conv-IndividualSoleTrader":  {
-                                                 "bytes":  91152,
-                                                 "source":  "Conveyancers - Customer forms - Onboarding form - Individual or sole trader - January 2026.docx"
-                                             },
-    "pdd-co-equals-governing-body":  {
-                                         "bytes":  98763,
-                                         "source":  "Legal profession - Personnel forms - Personnel due diligence where the compliance officer and governing body are the same person form - January 2026.docx"
-                                     },
-    "escalations-register":  {
-                                 "bytes":  76117,
-                                 "source":  "Legal profession - Customer forms - Escalations register - January 2026.docx"
-                             },
-    "initial-cdd-other-IndividualSoleTrader":  {
-                                                   "bytes":  179544,
-                                                   "source":  "Legal profession - Customer forms - Initial customer due diligence form - Individual or sole trader - January 2026.docx"
-                                               },
-    "independent-evaluation":  {
-                                   "bytes":  77736,
-                                   "source":  "Legal profession - Maintain program forms - Independent evaluation response form - January 2026.docx"
-                               },
-    "initial-cdd-conv-IndividualSoleTrader":  {
-                                                  "bytes":  196849,
-                                                  "source":  "Conveyancers - Customer forms - Initial customer due diligence form - Individual or sole trader - January 2026.docx"
-                                              },
-    "maintain-program":  {
-                             "bytes":  90413,
-                             "source":  "Legal profession - Maintain program forms - Maintain your AMLCTF program form - January 2026.docx"
-                         },
-    "onboarding-conv-Government":  {
-                                       "bytes":  96858,
-                                       "source":  "Conveyancers - Customer forms - Onboarding form - Government body - January 2026.docx"
-                                   },
-    "amlctf-roles":  {
-                         "bytes":  78840,
-                         "source":  "Legal profession - Personnel forms - AMLCTF roles form - January 2026.docx"
-                     },
     "initial-cdd-other-Government":  {
                                          "bytes":  220503,
                                          "source":  "Legal profession - Customer forms - Initial customer due diligence form - Government body - January 2026.docx"
                                      },
-    "escalation-form":  {
-                            "bytes":  80497,
-                            "source":  "Legal profession - Customer forms - Escalation form - January 2026.docx"
-                        },
-    "request-to-verify":  {
-                              "bytes":  82316,
-                              "source":  "Conveyancers - Customer forms - Request to verify information - January 2026.docx"
-                          },
-    "effectiveness-onboarding":  {
-                                     "bytes":  87490,
-                                     "source":  "Legal profession - Maintain program forms - Client onboarding effectiveness check form - January 2026.docx"
-                                 },
-    "assign-responsibilities":  {
-                                    "bytes":  82875,
-                                    "source":  "Legal profession - Personnel forms - Assign responsibilities form - January 2026.docx"
+    "initial-cdd-other-IndividualSoleTrader":  {
+                                                   "bytes":  179544,
+                                                   "source":  "Legal profession - Customer forms - Initial customer due diligence form - Individual or sole trader - January 2026.docx"
+                                               },
+    "initial-cdd-other-Trust":  {
+                                    "bytes":  237822,
+                                    "source":  "Legal profession - Customer forms - Initial customer due diligence form - Trust - January 2026.docx"
                                 },
+    "maintain-program":  {
+                             "bytes":  90413,
+                             "source":  "Legal profession - Maintain program forms - Maintain your AMLCTF program form - January 2026.docx"
+                         },
+    "onboarding-conv-BodyCorporatePartnershipAssoc":  {
+                                                          "bytes":  112165,
+                                                          "source":  "Conveyancers - Customer forms - Onboarding form - Body corporate, partnership or unincorporated association - January 2026.docx"
+                                                      },
+    "onboarding-conv-Government":  {
+                                       "bytes":  96858,
+                                       "source":  "Conveyancers - Customer forms - Onboarding form - Government body - January 2026.docx"
+                                   },
+    "onboarding-conv-IndividualSoleTrader":  {
+                                                 "bytes":  91152,
+                                                 "source":  "Conveyancers - Customer forms - Onboarding form - Individual or sole trader - January 2026.docx"
+                                             },
+    "onboarding-conv-Trust":  {
+                                  "bytes":  111178,
+                                  "source":  "Conveyancers - Customer forms - Onboarding form - trust - January 2026.docx"
+                              },
+    "onboarding-other-BodyCorporatePartnershipAssoc":  {
+                                                           "bytes":  115236,
+                                                           "source":  "Legal profession - Customer forms - Onboarding form - Body corporate, partnership or unincorporated association -January 2026.docx"
+                                                       },
+    "onboarding-other-Government":  {
+                                        "bytes":  96862,
+                                        "source":  "Legal profession - Customer forms - Onboarding form - Government body - January 2026.docx"
+                                    },
     "onboarding-other-IndividualSoleTrader":  {
                                                   "bytes":  91315,
                                                   "source":  "Legal profession - Customer forms - Onboarding form - Individual or sole trader - January 2026.docx"
                                               },
+    "onboarding-other-Trust":  {
+                                   "bytes":  111342,
+                                   "source":  "Legal profession - Customer forms - Onboarding form - Trust - January 2026.docx"
+                               },
+    "pdd-co-equals-governing-body":  {
+                                         "bytes":  98763,
+                                         "source":  "Legal profession - Personnel forms - Personnel due diligence where the compliance officer and governing body are the same person form - January 2026.docx"
+                                     },
+    "pdd-compliance-officer":  {
+                                   "bytes":  87572,
+                                   "source":  "Legal profession - Personnel forms - Personnel due diligence for AMLCTF compliance officer form - January 2026.docx"
+                               },
+    "pdd-general-staff":  {
+                              "bytes":  90936,
+                              "source":  "Legal profession - Personnel forms - Personnel due diligence form - January 2026.docx"
+                          },
+    "periodic-review":  {
+                            "bytes":  82573,
+                            "source":  "Legal profession - Customer forms - Periodic review and update form - January 2026.docx"
+                        },
     "policy-document":  {
                             "bytes":  1088509,
                             "source":  "Legal profession - Policy document - January 2026.docx"
@@ -131,44 +151,28 @@
                              "bytes":  985577,
                              "source":  "Legal profession - Process document - January 2026.docx"
                          },
-    "onboarding-other-Government":  {
-                                        "bytes":  96862,
-                                        "source":  "Legal profession - Customer forms - Onboarding form - Government body - January 2026.docx"
-                                    },
-    "initial-cdd-conv-Trust":  {
-                                   "bytes":  244280,
-                                   "source":  "Conveyancers - Customer forms - Initial customer due diligence form - Trust - January 2026.docx"
-                               },
-    "pdd-compliance-officer":  {
-                                   "bytes":  87572,
-                                   "source":  "Legal profession - Personnel forms - Personnel due diligence for AMLCTF compliance officer form - January 2026.docx"
-                               },
-    "periodic-review":  {
-                            "bytes":  82573,
-                            "source":  "Legal profession - Customer forms - Periodic review and update form - January 2026.docx"
+    "ra-conveyancing":  {
+                            "bytes":  986027,
+                            "source":  "Legal profession - Risk assessment - Conveyancing for the legal profession - January 2026.docx"
                         },
-    "effectiveness-smr":  {
-                              "bytes":  86621,
-                              "source":  "Legal profession - Maintain program forms - SMR effectiveness check form - January 2026.docx"
-                          },
-    "enhanced-cdd-form":  {
-                              "bytes":  82866,
-                              "source":  "Legal profession - Customer forms - Enhanced CDD form - January 2026.docx"
-                          },
-    "initial-cdd-conv-BodyCorporatePartnershipAssoc":  {
-                                                           "bytes":  234546,
-                                                           "source":  "Conveyancers - Customer forms - Initial customer due diligence form - Body corporate, partnership or association - January 2026.docx"
-                                                       },
-    "onboarding-other-Trust":  {
-                                   "bytes":  111342,
-                                   "source":  "Legal profession - Customer forms - Onboarding form - Trust - January 2026.docx"
+    "ra-other-prof-services":  {
+                                   "bytes":  993276,
+                                   "source":  "Legal profession - Risk assessment - Other professional services - January 2026.docx"
                                },
-    "effectiveness-ttr":  {
-                              "bytes":  79450,
-                              "source":  "Legal profession - Maintain program forms - TTR effectiveness check form - January 2026.docx"
+    "request-to-verify":  {
+                              "bytes":  82316,
+                              "source":  "Conveyancers - Customer forms - Request to verify information - January 2026.docx"
                           },
-    "onboarding-conv-BodyCorporatePartnershipAssoc":  {
-                                                          "bytes":  112165,
-                                                          "source":  "Conveyancers - Customer forms - Onboarding form - Body corporate, partnership or unincorporated association - January 2026.docx"
-                                                      }
+    "trigger-event-review":  {
+                                 "bytes":  83446,
+                                 "source":  "Legal profession - Customer forms - Trigger event review and update form - January 2026.docx"
+                             },
+    "unusual-activity-info":  {
+                                  "bytes":  78082,
+                                  "source":  "Legal profession - Customer forms - Unusual activity report information form - January 2026.docx"
+                              },
+    "unusual-activity-review":  {
+                                    "bytes":  89790,
+                                    "source":  "Legal profession - Customer forms - Unusual activity report review form - January 2026.docx"
+                                }
 }
