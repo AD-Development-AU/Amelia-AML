@@ -34,24 +34,28 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Resolve artefact for this tag
+      - name: Resolve artefact for this tag and build release ZIP
         id: stage
         run: |
           set -euo pipefail
-          # Tag is v0.2.0 -> files are aml-starter-kit-v0.2.0.html + .zip
           TAG="${GITHUB_REF_NAME}"
           ARTEFACT="aml-starter-kit-${TAG}.html"
+          COMPANION="Where am I.html"
           ZIP="aml-starter-kit-${TAG}.zip"
           if [ ! -f "${ARTEFACT}" ]; then
             echo "Expected artefact ${ARTEFACT} not present in the tagged commit."
             echo "BUILD.md requires _build-inline.ps1 to have been run before tagging."
             exit 1
           fi
-          if [ ! -f "${ZIP}" ]; then
-            echo "Expected release ZIP ${ZIP} not present in the tagged commit."
-            echo "_build-inline.ps1 produces it automatically — re-run before tagging."
+          if [ ! -f "${COMPANION}" ]; then
+            echo "Companion '${COMPANION}' missing from the tagged commit."
             exit 1
           fi
+          # The release ZIP is a build artefact (gitignored on the maintainer's
+          # machine via aml-starter-kit-v*.zip) so it is never committed.
+          # Rebuild it here from the committed sources; Linux 'zip' produces
+          # the same archive as _build-inline.ps1's Compress-Archive locally.
+          zip -q "${ZIP}" "${ARTEFACT}" "${COMPANION}"
           mkdir -p dist
           cp "${ARTEFACT}" "dist/${ARTEFACT}"
           cp "${ZIP}"      "dist/${ZIP}"
