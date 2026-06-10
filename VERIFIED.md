@@ -3,13 +3,13 @@
 This file records what has been verified against the live AUSTRAC Legal
 profession program starter kit document library, and what has not.
 
-**Last verification:** 2026-05-30
+**Last verification:** 2026-06-10
 **AUSTRAC release modelled on:** January 2026
 **Source:** `https://www.austrac.gov.au/sites/default/files/2026-01/`
 
 ## Verified — files bundled in `vendor/templates/`
 
-All 43 templates below have been downloaded directly from AUSTRAC and bundled
+All 44 templates below have been downloaded directly from AUSTRAC and bundled
 in `vendor/templates/` keyed by the catalogue id. Original AUSTRAC filenames
 are recorded in `vendor/templates/manifest.json`.
 
@@ -62,7 +62,7 @@ used for conveyancing transactions.
 | `initial-cdd-conv-Trust` | Conveyancers - Customer forms - Initial customer due diligence form - Trust - January 2026.docx |
 | `initial-cdd-conv-Government` | Conveyancers - Customer forms - Initial customer due diligence form - Government body - January 2026.docx |
 
-### Step 2 — Customer forms — Lifecycle (7)
+### Step 2 — Customer forms — Lifecycle (8)
 
 | Catalogue id | AUSTRAC filename |
 |---|---|
@@ -130,6 +130,69 @@ on every AML/CTF Rules amendment.
 | First independent evaluation deadline window | 30 June 2029 – 30 June 2030 | Transitional Rules 2025 |
 | Tranche 2 commencement | 1 July 2026 | AML/CTF Amendment Act 2024 |
 
+## Media-asset inventory (word/media/* in bundled templates)
+
+Automated scan run 2026-06-09. **57 PNG image assets** across **16/44 templates**;
+no other media types (no JPEG, GIF, SVG, EMF, WMF, OLE objects, ActiveX,
+macros, or VBA). **13 unique images** by byte-size, the remaining 44 are
+duplicates of those 13 reused across multiple templates.
+
+### Counts per template
+
+| Template | Image count | Total bytes |
+|---|---:|---:|
+| `customise-guide` | 7 | 830,062 |
+| `policy-document` | 5 | 824,306 |
+| `ra-conveyancing` | 4 | 786,717 |
+| `ra-other-prof-services` | 4 | 786,717 |
+| `process-document` | 2 | 774,960 |
+| `initial-cdd-conv-*` (4 templates) | 4 each | 24,885 each |
+| `initial-cdd-other-*` (4 templates) | 4 each | 24,885 each |
+| `unusual-activity-review` | 1 | 6,600 |
+| `onboarding-conv-BodyCorporatePartnershipAssoc` | 1 | 4,805 |
+| `onboarding-other-BodyCorporatePartnershipAssoc` | 1 | 4,805 |
+
+### 13 unique images (by byte-size)
+
+| Bytes | Reuse count | First template | First filename | Identification |
+|---:|---:|---|---|---|
+| 755,985 | 5 | `customise-guide` | image2.png | Decorative AUSTRAC page graphic / cover banner (non-branded) |
+| 37,456 | 1 | `policy-document` | image3.png | Diagram |
+| 32,028 | 1 | `customise-guide` | image4.png | Diagram |
+| 18,975 | 5 | `customise-guide` | image1.png | **AUSTRAC logo + Commonwealth Coat of Arms** — NOT CC BY 4.0; see LICENSE for usage terms |
+| 7,105 | 8 | `initial-cdd-conv-BodyCorporatePartnershipAssoc` | image3.png |
+| 6,601 | 8 | `initial-cdd-conv-BodyCorporatePartnershipAssoc` | image4.png |
+| 6,600 | 4 | `policy-document` | image5.png |
+| 6,374 | 9 | `customise-guide` | image7.png |
+| 5,993 | 1 | `customise-guide` | image6.png |
+| 5,417 | 1 | `customise-guide` | image3.png |
+| 5,290 | 2 | `customise-guide` | image5.png |
+| 5,157 | 2 | `ra-conveyancing` | image4.png |
+| 4,805 | 10 | `initial-cdd-conv-BodyCorporatePartnershipAssoc` | image1.png |
+
+### IP / licence sensitivity
+
+AUSTRAC's CC BY 4.0 licence on the starter-kit content **excludes** the
+AUSTRAC logo and the Commonwealth Coat of Arms. The visual inspection
+(see the table above) identified the **18,975-byte PNG (`image1.png`
+in `customise-guide`, reused in 4 other spine templates)** as containing
+both the AUSTRAC logo and the Commonwealth Coat of Arms.
+
+**Decision for v0.2.0:** retain the image; document the exclusion in
+[`LICENSE`](./LICENSE) under "Specifically — present in the bundled
+templates". Use is non-modifying and non-endorsing, which both PM&C
+("Commonwealth Coat of Arms — Information and Guidelines") and
+AUSTRAC's copyright page permit. Downstream redistribution (e.g.
+forking + republishing the kit standalone) must respect those terms;
+LICENSE recommends stripping the image for fork redistribution.
+
+The other 12 unique images are AUSTRAC-produced decorative / diagram
+content and inherit the CC BY 4.0 grant.
+
+**File-format note:** automated header check confirms all 57 files are
+genuine PNG (`89 50 4E 47` magic bytes). No file is a misnamed binary or
+embedded executable.
+
 ## How to contribute verification
 
 1. Open the AUSTRAC document library URL listed in `README.md`.
@@ -137,4 +200,4 @@ on every AML/CTF Rules amendment.
    AUSTRAC files.
 3. If AUSTRAC publishes a new release: re-run `vendor/templates/_bundle.ps1`
    after dropping the new files into `./austrac/`, bump `AUSTRAC_KIT_RELEASE`
-   in `index.html`, and update this file.
+   in the canonical HTML, and update this file.

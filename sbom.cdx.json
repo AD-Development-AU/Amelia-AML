@@ -1,0 +1,1038 @@
+{
+    "bomFormat":  "CycloneDX",
+    "specVersion":  "1.5",
+    "version":  1,
+    "metadata":  {
+                     "tools":  [
+                                   {
+                                       "name":  "manual-cyclonedx-author",
+                                       "vendor":  "Legal AML Starter Kit Assistant maintainer"
+                                   }
+                               ],
+                     "timestamp":  "2026-06-09T20:26:44Z",
+                     "component":  {
+                                       "version":  "0.2.0",
+                                       "name":  "Legal AML Starter Kit Assistant",
+                                       "bom-ref":  "pkg:legal-aml-starter-kit@0.2.0",
+                                       "description":  "Local-first, browser-only Australian AML/CTF program-document assembly tool for small legal practices",
+                                       "type":  "application",
+                                       "licenses":  [
+                                                        {
+                                                            "license":  {
+                                                                            "id":  "MIT"
+                                                                        }
+                                                        }
+                                                    ]
+                                   }
+                 },
+    "components":  [
+                       {
+                           "description":  "JavaScript zip library used by docxtemplater for DOCX archive read/write",
+                           "type":  "library",
+                           "licenses": [{
+                                            "license":  {
+                                                            "id":  "MIT"
+                                                        }
+                                        }],
+                           "version":  "3.1.4",
+                           "purl":  "pkg:npm/pizzip@3.1.4",
+                           "name":  "pizzip",
+                           "bom-ref":  "pkg:npm/pizzip@3.1.4",
+                           "hashes":  [
+                                          {
+                                              "alg":  "SHA-256",
+                                              "content":  "f79ef16b242e31de9c863fb76b618dbea5d597dac04cecd890897511d36e83cd"
+                                          }
+                                      ],
+                           "externalReferences":  [
+                                                      {
+                                                          "type":  "distribution",
+                                                          "url":  "https://cdn.jsdelivr.net/npm/pizzip@3.1.4/dist/pizzip.min.js"
+                                                      },
+                                                      {
+                                                          "type":  "website",
+                                                          "url":  "https://www.npmjs.com/package/pizzip"
+                                                      }
+                                                  ]
+                       },
+                       {
+                           "description":  "Mustache-style template engine for DOCX files. Core is MIT-licensed; the docxtemplater project also sells paid premium modules under a separate commercial licence (NOT bundled). Bundled artifact is the MIT-licensed core only.",
+                           "type":  "library",
+                           "licenses": [{
+                                            "license":  {
+                                                            "id":  "MIT"
+                                                        }
+                                        }],
+                           "version":  "3.37.11",
+                           "purl":  "pkg:npm/docxtemplater@3.37.11",
+                           "name":  "docxtemplater",
+                           "bom-ref":  "pkg:npm/docxtemplater@3.37.11",
+                           "hashes":  [
+                                          {
+                                              "alg":  "SHA-256",
+                                              "content":  "0647f62d024164cea566cf9615d374edf56fec9826d94ccbc3a6e011edcf26b8"
+                                          }
+                                      ],
+                           "externalReferences":  [
+                                                      {
+                                                          "type":  "distribution",
+                                                          "url":  "https://cdn.jsdelivr.net/npm/docxtemplater@3.37.11/build/docxtemplater.js"
+                                                      },
+                                                      {
+                                                          "type":  "website",
+                                                          "url":  "https://www.npmjs.com/package/docxtemplater"
+                                                      }
+                                                  ]
+                       },
+                       {
+                           "description":  "JavaScript zip library used for bundling multiple generated DOCX outputs into a single zip download",
+                           "type":  "library",
+                           "licenses": [{
+                                            "expression":  "MIT OR GPL-3.0-or-later"
+                                        }],
+                           "version":  "3.10.1",
+                           "purl":  "pkg:npm/jszip@3.10.1",
+                           "name":  "jszip",
+                           "bom-ref":  "pkg:npm/jszip@3.10.1",
+                           "hashes":  [
+                                          {
+                                              "alg":  "SHA-256",
+                                              "content":  "acc7e41455a80765b5fd9c7ee1b8078a6d160bbbca455aeae854de65c947d59e"
+                                          }
+                                      ],
+                           "externalReferences":  [
+                                                      {
+                                                          "type":  "distribution",
+                                                          "url":  "https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"
+                                                      },
+                                                      {
+                                                          "type":  "website",
+                                                          "url":  "https://www.npmjs.com/package/jszip"
+                                                      }
+                                                  ]
+                       },
+                       {
+                           "description":  "DOCX-to-HTML converter used for the in-app document preview pane",
+                           "type":  "library",
+                           "licenses": [{
+                                            "license":  {
+                                                            "id":  "BSD-2-Clause"
+                                                        }
+                                        }],
+                           "version":  "1.12.0",
+                           "purl":  "pkg:npm/mammoth@1.12.0",
+                           "name":  "mammoth",
+                           "bom-ref":  "pkg:npm/mammoth@1.12.0",
+                           "hashes":  [
+                                          {
+                                              "alg":  "SHA-256",
+                                              "content":  "5d4c0e7c9165d70b78f789c5274a2c7846d9e1c06ec19b69afa6ef45f789a3b9"
+                                          }
+                                      ],
+                           "externalReferences":  [
+                                                      {
+                                                          "type":  "distribution",
+                                                          "url":  "https://unpkg.com/mammoth@1.12.0/mammoth.browser.min.js"
+                                                      },
+                                                      {
+                                                          "type":  "website",
+                                                          "url":  "https://www.npmjs.com/package/mammoth"
+                                                      }
+                                                  ]
+                       },
+                       {
+                           "version":  "0.2.0",
+                           "name":  "aml-starter-kit-v0.2.0.html",
+                           $1925102e15c0a238f487c5dcc06ad97ea0c54f56205d0371dac031c64516fff7f"
+                                          }
+                                      ],
+                           "licenses":  [
+                                            {
+                                                "license":  {
+                                                                "id":  "MIT"
+                                                            }
+                                            }
+                                        ]
+                       },
+                       {
+                           "hashes":  [
+                                          {
+                                              "alg":  "SHA-256",
+                                              "content":  "26d0700cfdf184785164705dd613fa02f81208bff201ecf12b485e70c4e95d08"
+                                          }
+                                      ],
+                           "name":  "amlctf-roles.docx",
+                           "bom-ref":  "file:vendor/templates/amlctf-roles.docx",
+                           "description":  "AUSTRAC Legal profession program starter kit / Conveyancers template (January 2026 release). See VERIFIED.md for AUSTRAC source filename.",
+                           "type":  "file",
+                           "licenses":  [
+                                            {
+                                                "license":  {
+                                                                "id":  "CC-BY-4.0",
+                                                                "url":  "https://creativecommons.org/licenses/by/4.0/"
+                                                            }
+                                            }
+                                        ]
+                       },
+                       {
+                           "hashes":  [
+                                          {
+                                              "alg":  "SHA-256",
+                                              "content":  "cfe98129d24b444d92f1514f07e1121e31d008ff5e21ccd154020558b656ceba"
+                                          }
+                                      ],
+                           "name":  "annual-governing-report.docx",
+                           "bom-ref":  "file:vendor/templates/annual-governing-report.docx",
+                           "description":  "AUSTRAC Legal profession program starter kit / Conveyancers template (January 2026 release). See VERIFIED.md for AUSTRAC source filename.",
+                           "type":  "file",
+                           "licenses":  [
+                                            {
+                                                "license":  {
+                                                                "id":  "CC-BY-4.0",
+                                                                "url":  "https://creativecommons.org/licenses/by/4.0/"
+                                                            }
+                                            }
+                                        ]
+                       },
+                       {
+                           "hashes":  [
+                                          {
+                                              "alg":  "SHA-256",
+                                              "content":  "cbe8d8ec2dd8a087269b8d1c2f6531ce09faf1b97896bb6709b7a99a70826d52"
+                                          }
+                                      ],
+                           "name":  "assign-responsibilities.docx",
+                           "bom-ref":  "file:vendor/templates/assign-responsibilities.docx",
+                           "description":  "AUSTRAC Legal profession program starter kit / Conveyancers template (January 2026 release). See VERIFIED.md for AUSTRAC source filename.",
+                           "type":  "file",
+                           "licenses":  [
+                                            {
+                                                "license":  {
+                                                                "id":  "CC-BY-4.0",
+                                                                "url":  "https://creativecommons.org/licenses/by/4.0/"
+                                                            }
+                                            }
+                                        ]
+                       },
+                       {
+                           "hashes":  [
+                                          {
+                                              "alg":  "SHA-256",
+                                              "content":  "96cf65f3a63358ac04938967926e8fa76ddb0e4374dc6670c57e8a554237a501"
+                                          }
+                                      ],
+                           "name":  "customise-guide.docx",
+                           "bom-ref":  "file:vendor/templates/customise-guide.docx",
+                           "description":  "AUSTRAC Legal profession program starter kit / Conveyancers template (January 2026 release). See VERIFIED.md for AUSTRAC source filename.",
+                           "type":  "file",
+                           "licenses":  [
+                                            {
+                                                "license":  {
+                                                                "id":  "CC-BY-4.0",
+                                                                "url":  "https://creativecommons.org/licenses/by/4.0/"
+                                                            }
+                                            }
+                                        ]
+                       },
+                       {
+                           "hashes":  [
+                                          {
+                                              "alg":  "SHA-256",
+                                              "content":  "5039e54c7c7327c3f328c5e299cf74f8077e1d0684aa0b66a407472e30e2e098"
+                                          }
+                                      ],
+                           "name":  "effectiveness-cbm.docx",
+                           "bom-ref":  "file:vendor/templates/effectiveness-cbm.docx",
+                           "description":  "AUSTRAC Legal profession program starter kit / Conveyancers template (January 2026 release). See VERIFIED.md for AUSTRAC source filename.",
+                           "type":  "file",
+                           "licenses":  [
+                                            {
+                                                "license":  {
+                                                                "id":  "CC-BY-4.0",
+                                                                "url":  "https://creativecommons.org/licenses/by/4.0/"
+                                                            }
+                                            }
+                                        ]
+                       },
+                       {
+                           "hashes":  [
+                                          {
+                                              "alg":  "SHA-256",
+                                              "content":  "d24f8f58693cba3afa211ad4ba62c4a60b9fcac0618f33bbdabcc62b1f01e52f"
+                                          }
+                                      ],
+                           "name":  "effectiveness-co-sm.docx",
+                           "bom-ref":  "file:vendor/templates/effectiveness-co-sm.docx",
+                           "description":  "AUSTRAC Legal profession program starter kit / Conveyancers template (January 2026 release). See VERIFIED.md for AUSTRAC source filename.",
+                           "type":  "file",
+                           "licenses":  [
+                                            {
+                                                "license":  {
+                                                                "id":  "CC-BY-4.0",
+                                                                "url":  "https://creativecommons.org/licenses/by/4.0/"
+                                                            }
+                                            }
+                                        ]
+                       },
+                       {
+                           "hashes":  [
+                                          {
+                                              "alg":  "SHA-256",
+                                              "content":  "22fd6cc7e8d7345d7f1defcb060f29b25e3a7d194efd9855d4092b6fef51020a"
+                                          }
+                                      ],
+                           "name":  "effectiveness-enhanced-cdd.docx",
+                           "bom-ref":  "file:vendor/templates/effectiveness-enhanced-cdd.docx",
+                           "description":  "AUSTRAC Legal profession program starter kit / Conveyancers template (January 2026 release). See VERIFIED.md for AUSTRAC source filename.",
+                           "type":  "file",
+                           "licenses":  [
+                                            {
+                                                "license":  {
+                                                                "id":  "CC-BY-4.0",
+                                                                "url":  "https://creativecommons.org/licenses/by/4.0/"
+                                                            }
+                                            }
+                                        ]
+                       },
+                       {
+                           "hashes":  [
+                                          {
+                                              "alg":  "SHA-256",
+                                              "content":  "9f7f10798756c05422b5078852a9048aa8605d7f70d72446f6915ee6682b3aa0"
+                                          }
+                                      ],
+                           "name":  "effectiveness-onboarding.docx",
+                           "bom-ref":  "file:vendor/templates/effectiveness-onboarding.docx",
+                           "description":  "AUSTRAC Legal profession program starter kit / Conveyancers template (January 2026 release). See VERIFIED.md for AUSTRAC source filename.",
+                           "type":  "file",
+                           "licenses":  [
+                                            {
+                                                "license":  {
+                                                                "id":  "CC-BY-4.0",
+                                                                "url":  "https://creativecommons.org/licenses/by/4.0/"
+                                                            }
+                                            }
+                                        ]
+                       },
+                       {
+                           "hashes":  [
+                                          {
+                                              "alg":  "SHA-256",
+                                              "content":  "e2a5c94791404e38b22b0a5b2c5de0e6126c516edfa42915911bcc80c220c66e"
+                                          }
+                                      ],
+                           "name":  "effectiveness-periodic-summary.docx",
+                           "bom-ref":  "file:vendor/templates/effectiveness-periodic-summary.docx",
+                           "description":  "AUSTRAC Legal profession program starter kit / Conveyancers template (January 2026 release). See VERIFIED.md for AUSTRAC source filename.",
+                           "type":  "file",
+                           "licenses":  [
+                                            {
+                                                "license":  {
+                                                                "id":  "CC-BY-4.0",
+                                                                "url":  "https://creativecommons.org/licenses/by/4.0/"
+                                                            }
+                                            }
+                                        ]
+                       },
+                       {
+                           "hashes":  [
+                                          {
+                                              "alg":  "SHA-256",
+                                              "content":  "d1c3649ad2581f677a8b479b52e8ad1641b7115b83c98ecbab87ec181a7650b5"
+                                          }
+                                      ],
+                           "name":  "effectiveness-smr.docx",
+                           "bom-ref":  "file:vendor/templates/effectiveness-smr.docx",
+                           "description":  "AUSTRAC Legal profession program starter kit / Conveyancers template (January 2026 release). See VERIFIED.md for AUSTRAC source filename.",
+                           "type":  "file",
+                           "licenses":  [
+                                            {
+                                                "license":  {
+                                                                "id":  "CC-BY-4.0",
+                                                                "url":  "https://creativecommons.org/licenses/by/4.0/"
+                                                            }
+                                            }
+                                        ]
+                       },
+                       {
+                           "hashes":  [
+                                          {
+                                              "alg":  "SHA-256",
+                                              "content":  "ac5c97210dfbbf882d0c7786c862cb01cddeb08cf5b43fcffc5498ed4f97c85d"
+                                          }
+                                      ],
+                           "name":  "effectiveness-ttr.docx",
+                           "bom-ref":  "file:vendor/templates/effectiveness-ttr.docx",
+                           "description":  "AUSTRAC Legal profession program starter kit / Conveyancers template (January 2026 release). See VERIFIED.md for AUSTRAC source filename.",
+                           "type":  "file",
+                           "licenses":  [
+                                            {
+                                                "license":  {
+                                                                "id":  "CC-BY-4.0",
+                                                                "url":  "https://creativecommons.org/licenses/by/4.0/"
+                                                            }
+                                            }
+                                        ]
+                       },
+                       {
+                           "hashes":  [
+                                          {
+                                              "alg":  "SHA-256",
+                                              "content":  "b3a21bbef727d8666e6ffd947cff6107f3b59399eec559441d4553e6da3ebda9"
+                                          }
+                                      ],
+                           "name":  "enhanced-cdd-form.docx",
+                           "bom-ref":  "file:vendor/templates/enhanced-cdd-form.docx",
+                           "description":  "AUSTRAC Legal profession program starter kit / Conveyancers template (January 2026 release). See VERIFIED.md for AUSTRAC source filename.",
+                           "type":  "file",
+                           "licenses":  [
+                                            {
+                                                "license":  {
+                                                                "id":  "CC-BY-4.0",
+                                                                "url":  "https://creativecommons.org/licenses/by/4.0/"
+                                                            }
+                                            }
+                                        ]
+                       },
+                       {
+                           "hashes":  [
+                                          {
+                                              "alg":  "SHA-256",
+                                              "content":  "9dc0692381744470fc593237b7e7d8bd9aa212ea69c61baca1f8cf4fe57730c4"
+                                          }
+                                      ],
+                           "name":  "escalation-form.docx",
+                           "bom-ref":  "file:vendor/templates/escalation-form.docx",
+                           "description":  "AUSTRAC Legal profession program starter kit / Conveyancers template (January 2026 release). See VERIFIED.md for AUSTRAC source filename.",
+                           "type":  "file",
+                           "licenses":  [
+                                            {
+                                                "license":  {
+                                                                "id":  "CC-BY-4.0",
+                                                                "url":  "https://creativecommons.org/licenses/by/4.0/"
+                                                            }
+                                            }
+                                        ]
+                       },
+                       {
+                           "hashes":  [
+                                          {
+                                              "alg":  "SHA-256",
+                                              "content":  "4e1279386024851378e7fda920850e0eaa33439f2d5157007d313a2d8b3bca53"
+                                          }
+                                      ],
+                           "name":  "escalations-register.docx",
+                           "bom-ref":  "file:vendor/templates/escalations-register.docx",
+                           "description":  "AUSTRAC Legal profession program starter kit / Conveyancers template (January 2026 release). See VERIFIED.md for AUSTRAC source filename.",
+                           "type":  "file",
+                           "licenses":  [
+                                            {
+                                                "license":  {
+                                                                "id":  "CC-BY-4.0",
+                                                                "url":  "https://creativecommons.org/licenses/by/4.0/"
+                                                            }
+                                            }
+                                        ]
+                       },
+                       {
+                           "hashes":  [
+                                          {
+                                              "alg":  "SHA-256",
+                                              "content":  "28794183238896c8de13eab4babf73c3aeae0841a6ebada2ad624b648c16375d"
+                                          }
+                                      ],
+                           "name":  "independent-evaluation.docx",
+                           "bom-ref":  "file:vendor/templates/independent-evaluation.docx",
+                           "description":  "AUSTRAC Legal profession program starter kit / Conveyancers template (January 2026 release). See VERIFIED.md for AUSTRAC source filename.",
+                           "type":  "file",
+                           "licenses":  [
+                                            {
+                                                "license":  {
+                                                                "id":  "CC-BY-4.0",
+                                                                "url":  "https://creativecommons.org/licenses/by/4.0/"
+                                                            }
+                                            }
+                                        ]
+                       },
+                       {
+                           "hashes":  [
+                                          {
+                                              "alg":  "SHA-256",
+                                              "content":  "7532f62d68ecd24bb185170cec70d2fcd5dbb3073f69bb64e401dac7f9c1b3cc"
+                                          }
+                                      ],
+                           "name":  "initial-cdd-conv-BodyCorporatePartnershipAssoc.docx",
+                           "bom-ref":  "file:vendor/templates/initial-cdd-conv-BodyCorporatePartnershipAssoc.docx",
+                           "description":  "AUSTRAC Legal profession program starter kit / Conveyancers template (January 2026 release). See VERIFIED.md for AUSTRAC source filename.",
+                           "type":  "file",
+                           "licenses":  [
+                                            {
+                                                "license":  {
+                                                                "id":  "CC-BY-4.0",
+                                                                "url":  "https://creativecommons.org/licenses/by/4.0/"
+                                                            }
+                                            }
+                                        ]
+                       },
+                       {
+                           "hashes":  [
+                                          {
+                                              "alg":  "SHA-256",
+                                              "content":  "de76b396b02857bb0cb1bfea310280bc2f739c9c25e3bd95e8123207ddd0285f"
+                                          }
+                                      ],
+                           "name":  "initial-cdd-conv-Government.docx",
+                           "bom-ref":  "file:vendor/templates/initial-cdd-conv-Government.docx",
+                           "description":  "AUSTRAC Legal profession program starter kit / Conveyancers template (January 2026 release). See VERIFIED.md for AUSTRAC source filename.",
+                           "type":  "file",
+                           "licenses":  [
+                                            {
+                                                "license":  {
+                                                                "id":  "CC-BY-4.0",
+                                                                "url":  "https://creativecommons.org/licenses/by/4.0/"
+                                                            }
+                                            }
+                                        ]
+                       },
+                       {
+                           "hashes":  [
+                                          {
+                                              "alg":  "SHA-256",
+                                              "content":  "7b6c3e1fef692bc86d7cbea8b53fda6c3daba81c966b78139054586974392301"
+                                          }
+                                      ],
+                           "name":  "initial-cdd-conv-IndividualSoleTrader.docx",
+                           "bom-ref":  "file:vendor/templates/initial-cdd-conv-IndividualSoleTrader.docx",
+                           "description":  "AUSTRAC Legal profession program starter kit / Conveyancers template (January 2026 release). See VERIFIED.md for AUSTRAC source filename.",
+                           "type":  "file",
+                           "licenses":  [
+                                            {
+                                                "license":  {
+                                                                "id":  "CC-BY-4.0",
+                                                                "url":  "https://creativecommons.org/licenses/by/4.0/"
+                                                            }
+                                            }
+                                        ]
+                       },
+                       {
+                           "hashes":  [
+                                          {
+                                              "alg":  "SHA-256",
+                                              "content":  "0112f7e4a693f302d29e268c094f6e64a1892ec0083b3277fa68c3d7fbfcc3e6"
+                                          }
+                                      ],
+                           "name":  "initial-cdd-conv-Trust.docx",
+                           "bom-ref":  "file:vendor/templates/initial-cdd-conv-Trust.docx",
+                           "description":  "AUSTRAC Legal profession program starter kit / Conveyancers template (January 2026 release). See VERIFIED.md for AUSTRAC source filename.",
+                           "type":  "file",
+                           "licenses":  [
+                                            {
+                                                "license":  {
+                                                                "id":  "CC-BY-4.0",
+                                                                "url":  "https://creativecommons.org/licenses/by/4.0/"
+                                                            }
+                                            }
+                                        ]
+                       },
+                       {
+                           "hashes":  [
+                                          {
+                                              "alg":  "SHA-256",
+                                              "content":  "6187568871363431eb8539d4f9c7d98d67a0eeb06080e0058215daa2bb8dbe75"
+                                          }
+                                      ],
+                           "name":  "initial-cdd-other-BodyCorporatePartnershipAssoc.docx",
+                           "bom-ref":  "file:vendor/templates/initial-cdd-other-BodyCorporatePartnershipAssoc.docx",
+                           "description":  "AUSTRAC Legal profession program starter kit / Conveyancers template (January 2026 release). See VERIFIED.md for AUSTRAC source filename.",
+                           "type":  "file",
+                           "licenses":  [
+                                            {
+                                                "license":  {
+                                                                "id":  "CC-BY-4.0",
+                                                                "url":  "https://creativecommons.org/licenses/by/4.0/"
+                                                            }
+                                            }
+                                        ]
+                       },
+                       {
+                           "hashes":  [
+                                          {
+                                              "alg":  "SHA-256",
+                                              "content":  "c523aba57ceef31cc07af7a5142d10d04c799a7ec3d741e0e01abd66ac3477e4"
+                                          }
+                                      ],
+                           "name":  "initial-cdd-other-Government.docx",
+                           "bom-ref":  "file:vendor/templates/initial-cdd-other-Government.docx",
+                           "description":  "AUSTRAC Legal profession program starter kit / Conveyancers template (January 2026 release). See VERIFIED.md for AUSTRAC source filename.",
+                           "type":  "file",
+                           "licenses":  [
+                                            {
+                                                "license":  {
+                                                                "id":  "CC-BY-4.0",
+                                                                "url":  "https://creativecommons.org/licenses/by/4.0/"
+                                                            }
+                                            }
+                                        ]
+                       },
+                       {
+                           "hashes":  [
+                                          {
+                                              "alg":  "SHA-256",
+                                              "content":  "98938b606ce216294d5d3603cd1b446d69b7070403b1e854c662fe58ea19b309"
+                                          }
+                                      ],
+                           "name":  "initial-cdd-other-IndividualSoleTrader.docx",
+                           "bom-ref":  "file:vendor/templates/initial-cdd-other-IndividualSoleTrader.docx",
+                           "description":  "AUSTRAC Legal profession program starter kit / Conveyancers template (January 2026 release). See VERIFIED.md for AUSTRAC source filename.",
+                           "type":  "file",
+                           "licenses":  [
+                                            {
+                                                "license":  {
+                                                                "id":  "CC-BY-4.0",
+                                                                "url":  "https://creativecommons.org/licenses/by/4.0/"
+                                                            }
+                                            }
+                                        ]
+                       },
+                       {
+                           "hashes":  [
+                                          {
+                                              "alg":  "SHA-256",
+                                              "content":  "1d8d259d7b94841a9a9936bbeddd28b230f2da3c70216e0cc17e17a4094744f2"
+                                          }
+                                      ],
+                           "name":  "initial-cdd-other-Trust.docx",
+                           "bom-ref":  "file:vendor/templates/initial-cdd-other-Trust.docx",
+                           "description":  "AUSTRAC Legal profession program starter kit / Conveyancers template (January 2026 release). See VERIFIED.md for AUSTRAC source filename.",
+                           "type":  "file",
+                           "licenses":  [
+                                            {
+                                                "license":  {
+                                                                "id":  "CC-BY-4.0",
+                                                                "url":  "https://creativecommons.org/licenses/by/4.0/"
+                                                            }
+                                            }
+                                        ]
+                       },
+                       {
+                           "hashes":  [
+                                          {
+                                              "alg":  "SHA-256",
+                                              "content":  "147b499793d986af1cf290a9f7aa1ff061fe00344ead1110915eef6528ae5b7d"
+                                          }
+                                      ],
+                           "name":  "maintain-program.docx",
+                           "bom-ref":  "file:vendor/templates/maintain-program.docx",
+                           "description":  "AUSTRAC Legal profession program starter kit / Conveyancers template (January 2026 release). See VERIFIED.md for AUSTRAC source filename.",
+                           "type":  "file",
+                           "licenses":  [
+                                            {
+                                                "license":  {
+                                                                "id":  "CC-BY-4.0",
+                                                                "url":  "https://creativecommons.org/licenses/by/4.0/"
+                                                            }
+                                            }
+                                        ]
+                       },
+                       {
+                           "hashes":  [
+                                          {
+                                              "alg":  "SHA-256",
+                                              "content":  "92d097ead564ad95e440e1742dc035e315120de24e6b54f28bdc928ad6c1a063"
+                                          }
+                                      ],
+                           "name":  "onboarding-conv-BodyCorporatePartnershipAssoc.docx",
+                           "bom-ref":  "file:vendor/templates/onboarding-conv-BodyCorporatePartnershipAssoc.docx",
+                           "description":  "AUSTRAC Legal profession program starter kit / Conveyancers template (January 2026 release). See VERIFIED.md for AUSTRAC source filename.",
+                           "type":  "file",
+                           "licenses":  [
+                                            {
+                                                "license":  {
+                                                                "id":  "CC-BY-4.0",
+                                                                "url":  "https://creativecommons.org/licenses/by/4.0/"
+                                                            }
+                                            }
+                                        ]
+                       },
+                       {
+                           "hashes":  [
+                                          {
+                                              "alg":  "SHA-256",
+                                              "content":  "539399e05266c99b2fa46ad64237d9e308342fbab11605915376f1d24d6acf4f"
+                                          }
+                                      ],
+                           "name":  "onboarding-conv-Government.docx",
+                           "bom-ref":  "file:vendor/templates/onboarding-conv-Government.docx",
+                           "description":  "AUSTRAC Legal profession program starter kit / Conveyancers template (January 2026 release). See VERIFIED.md for AUSTRAC source filename.",
+                           "type":  "file",
+                           "licenses":  [
+                                            {
+                                                "license":  {
+                                                                "id":  "CC-BY-4.0",
+                                                                "url":  "https://creativecommons.org/licenses/by/4.0/"
+                                                            }
+                                            }
+                                        ]
+                       },
+                       {
+                           "hashes":  [
+                                          {
+                                              "alg":  "SHA-256",
+                                              "content":  "e9fe1b12cbd9e253757be27de95b3ee287ae2cb485a34c9fe7a739505fb032e8"
+                                          }
+                                      ],
+                           "name":  "onboarding-conv-IndividualSoleTrader.docx",
+                           "bom-ref":  "file:vendor/templates/onboarding-conv-IndividualSoleTrader.docx",
+                           "description":  "AUSTRAC Legal profession program starter kit / Conveyancers template (January 2026 release). See VERIFIED.md for AUSTRAC source filename.",
+                           "type":  "file",
+                           "licenses":  [
+                                            {
+                                                "license":  {
+                                                                "id":  "CC-BY-4.0",
+                                                                "url":  "https://creativecommons.org/licenses/by/4.0/"
+                                                            }
+                                            }
+                                        ]
+                       },
+                       {
+                           "hashes":  [
+                                          {
+                                              "alg":  "SHA-256",
+                                              "content":  "6a2cb84faf3d5ed531e68e51e66d3cf20ab125471a0e009220a0d67eb47004a5"
+                                          }
+                                      ],
+                           "name":  "onboarding-conv-Trust.docx",
+                           "bom-ref":  "file:vendor/templates/onboarding-conv-Trust.docx",
+                           "description":  "AUSTRAC Legal profession program starter kit / Conveyancers template (January 2026 release). See VERIFIED.md for AUSTRAC source filename.",
+                           "type":  "file",
+                           "licenses":  [
+                                            {
+                                                "license":  {
+                                                                "id":  "CC-BY-4.0",
+                                                                "url":  "https://creativecommons.org/licenses/by/4.0/"
+                                                            }
+                                            }
+                                        ]
+                       },
+                       {
+                           "hashes":  [
+                                          {
+                                              "alg":  "SHA-256",
+                                              "content":  "0dcf6e16bfbad591866ca94f461eb3cd2d97fbe352fa5896c0d9a8dd5961a02a"
+                                          }
+                                      ],
+                           "name":  "onboarding-other-BodyCorporatePartnershipAssoc.docx",
+                           "bom-ref":  "file:vendor/templates/onboarding-other-BodyCorporatePartnershipAssoc.docx",
+                           "description":  "AUSTRAC Legal profession program starter kit / Conveyancers template (January 2026 release). See VERIFIED.md for AUSTRAC source filename.",
+                           "type":  "file",
+                           "licenses":  [
+                                            {
+                                                "license":  {
+                                                                "id":  "CC-BY-4.0",
+                                                                "url":  "https://creativecommons.org/licenses/by/4.0/"
+                                                            }
+                                            }
+                                        ]
+                       },
+                       {
+                           "hashes":  [
+                                          {
+                                              "alg":  "SHA-256",
+                                              "content":  "700106bacd6e7d820431563f9de7ba762cd35df9bdaa900584fcc3feed0dbb60"
+                                          }
+                                      ],
+                           "name":  "onboarding-other-Government.docx",
+                           "bom-ref":  "file:vendor/templates/onboarding-other-Government.docx",
+                           "description":  "AUSTRAC Legal profession program starter kit / Conveyancers template (January 2026 release). See VERIFIED.md for AUSTRAC source filename.",
+                           "type":  "file",
+                           "licenses":  [
+                                            {
+                                                "license":  {
+                                                                "id":  "CC-BY-4.0",
+                                                                "url":  "https://creativecommons.org/licenses/by/4.0/"
+                                                            }
+                                            }
+                                        ]
+                       },
+                       {
+                           "hashes":  [
+                                          {
+                                              "alg":  "SHA-256",
+                                              "content":  "ae6e7cf36268f4b8bfc7f587731e820c205a9de5bbbfb6ac79650ef32e2c4098"
+                                          }
+                                      ],
+                           "name":  "onboarding-other-IndividualSoleTrader.docx",
+                           "bom-ref":  "file:vendor/templates/onboarding-other-IndividualSoleTrader.docx",
+                           "description":  "AUSTRAC Legal profession program starter kit / Conveyancers template (January 2026 release). See VERIFIED.md for AUSTRAC source filename.",
+                           "type":  "file",
+                           "licenses":  [
+                                            {
+                                                "license":  {
+                                                                "id":  "CC-BY-4.0",
+                                                                "url":  "https://creativecommons.org/licenses/by/4.0/"
+                                                            }
+                                            }
+                                        ]
+                       },
+                       {
+                           "hashes":  [
+                                          {
+                                              "alg":  "SHA-256",
+                                              "content":  "ed5afc112467d34195ac0ae10554c4bbb527bf22ffe6f2af82aa4abc8846baf5"
+                                          }
+                                      ],
+                           "name":  "onboarding-other-Trust.docx",
+                           "bom-ref":  "file:vendor/templates/onboarding-other-Trust.docx",
+                           "description":  "AUSTRAC Legal profession program starter kit / Conveyancers template (January 2026 release). See VERIFIED.md for AUSTRAC source filename.",
+                           "type":  "file",
+                           "licenses":  [
+                                            {
+                                                "license":  {
+                                                                "id":  "CC-BY-4.0",
+                                                                "url":  "https://creativecommons.org/licenses/by/4.0/"
+                                                            }
+                                            }
+                                        ]
+                       },
+                       {
+                           "hashes":  [
+                                          {
+                                              "alg":  "SHA-256",
+                                              "content":  "777df1b1304a1410e0f0126363ae1d2bd621ede48e84e1237513e4954779a00e"
+                                          }
+                                      ],
+                           "name":  "pdd-co-equals-governing-body.docx",
+                           "bom-ref":  "file:vendor/templates/pdd-co-equals-governing-body.docx",
+                           "description":  "AUSTRAC Legal profession program starter kit / Conveyancers template (January 2026 release). See VERIFIED.md for AUSTRAC source filename.",
+                           "type":  "file",
+                           "licenses":  [
+                                            {
+                                                "license":  {
+                                                                "id":  "CC-BY-4.0",
+                                                                "url":  "https://creativecommons.org/licenses/by/4.0/"
+                                                            }
+                                            }
+                                        ]
+                       },
+                       {
+                           "hashes":  [
+                                          {
+                                              "alg":  "SHA-256",
+                                              "content":  "6fa7672b6ee98e1a0d0f7da620c1fe4b4846cc44d621b8e96dc09c93c8223dd9"
+                                          }
+                                      ],
+                           "name":  "pdd-compliance-officer.docx",
+                           "bom-ref":  "file:vendor/templates/pdd-compliance-officer.docx",
+                           "description":  "AUSTRAC Legal profession program starter kit / Conveyancers template (January 2026 release). See VERIFIED.md for AUSTRAC source filename.",
+                           "type":  "file",
+                           "licenses":  [
+                                            {
+                                                "license":  {
+                                                                "id":  "CC-BY-4.0",
+                                                                "url":  "https://creativecommons.org/licenses/by/4.0/"
+                                                            }
+                                            }
+                                        ]
+                       },
+                       {
+                           "hashes":  [
+                                          {
+                                              "alg":  "SHA-256",
+                                              "content":  "fb2ba26f1ec6339f5a4a2a3e801121e25849f16b2670cc8357e5613332496bc7"
+                                          }
+                                      ],
+                           "name":  "pdd-general-staff.docx",
+                           "bom-ref":  "file:vendor/templates/pdd-general-staff.docx",
+                           "description":  "AUSTRAC Legal profession program starter kit / Conveyancers template (January 2026 release). See VERIFIED.md for AUSTRAC source filename.",
+                           "type":  "file",
+                           "licenses":  [
+                                            {
+                                                "license":  {
+                                                                "id":  "CC-BY-4.0",
+                                                                "url":  "https://creativecommons.org/licenses/by/4.0/"
+                                                            }
+                                            }
+                                        ]
+                       },
+                       {
+                           "hashes":  [
+                                          {
+                                              "alg":  "SHA-256",
+                                              "content":  "662bdd8486781cc26e3f5ed143488ad1cf8648607cb02378180db62c63aefdf0"
+                                          }
+                                      ],
+                           "name":  "periodic-review.docx",
+                           "bom-ref":  "file:vendor/templates/periodic-review.docx",
+                           "description":  "AUSTRAC Legal profession program starter kit / Conveyancers template (January 2026 release). See VERIFIED.md for AUSTRAC source filename.",
+                           "type":  "file",
+                           "licenses":  [
+                                            {
+                                                "license":  {
+                                                                "id":  "CC-BY-4.0",
+                                                                "url":  "https://creativecommons.org/licenses/by/4.0/"
+                                                            }
+                                            }
+                                        ]
+                       },
+                       {
+                           "hashes":  [
+                                          {
+                                              "alg":  "SHA-256",
+                                              "content":  "7b60e563bb59dad0f38f149990bdcd0de78db099470e0eaa2ee31801b656615d"
+                                          }
+                                      ],
+                           "name":  "policy-document.docx",
+                           "bom-ref":  "file:vendor/templates/policy-document.docx",
+                           "description":  "AUSTRAC Legal profession program starter kit / Conveyancers template (January 2026 release). See VERIFIED.md for AUSTRAC source filename.",
+                           "type":  "file",
+                           "licenses":  [
+                                            {
+                                                "license":  {
+                                                                "id":  "CC-BY-4.0",
+                                                                "url":  "https://creativecommons.org/licenses/by/4.0/"
+                                                            }
+                                            }
+                                        ]
+                       },
+                       {
+                           "hashes":  [
+                                          {
+                                              "alg":  "SHA-256",
+                                              "content":  "07ad951671d6acd4d11c7c63fff872926ccbc547899ffdff2caf9e43f9b6f5c7"
+                                          }
+                                      ],
+                           "name":  "process-document.docx",
+                           "bom-ref":  "file:vendor/templates/process-document.docx",
+                           "description":  "AUSTRAC Legal profession program starter kit / Conveyancers template (January 2026 release). See VERIFIED.md for AUSTRAC source filename.",
+                           "type":  "file",
+                           "licenses":  [
+                                            {
+                                                "license":  {
+                                                                "id":  "CC-BY-4.0",
+                                                                "url":  "https://creativecommons.org/licenses/by/4.0/"
+                                                            }
+                                            }
+                                        ]
+                       },
+                       {
+                           "hashes":  [
+                                          {
+                                              "alg":  "SHA-256",
+                                              "content":  "1175b3c03abee549d6ce66d231851c1708bb9b95bd9858fd718ac1930cc757be"
+                                          }
+                                      ],
+                           "name":  "ra-conveyancing.docx",
+                           "bom-ref":  "file:vendor/templates/ra-conveyancing.docx",
+                           "description":  "AUSTRAC Legal profession program starter kit / Conveyancers template (January 2026 release). See VERIFIED.md for AUSTRAC source filename.",
+                           "type":  "file",
+                           "licenses":  [
+                                            {
+                                                "license":  {
+                                                                "id":  "CC-BY-4.0",
+                                                                "url":  "https://creativecommons.org/licenses/by/4.0/"
+                                                            }
+                                            }
+                                        ]
+                       },
+                       {
+                           "hashes":  [
+                                          {
+                                              "alg":  "SHA-256",
+                                              "content":  "917f0ba66d1e44a867f90b91f750450470109b3670133b03b9e79b7f75aeb3f8"
+                                          }
+                                      ],
+                           "name":  "ra-other-prof-services.docx",
+                           "bom-ref":  "file:vendor/templates/ra-other-prof-services.docx",
+                           "description":  "AUSTRAC Legal profession program starter kit / Conveyancers template (January 2026 release). See VERIFIED.md for AUSTRAC source filename.",
+                           "type":  "file",
+                           "licenses":  [
+                                            {
+                                                "license":  {
+                                                                "id":  "CC-BY-4.0",
+                                                                "url":  "https://creativecommons.org/licenses/by/4.0/"
+                                                            }
+                                            }
+                                        ]
+                       },
+                       {
+                           "hashes":  [
+                                          {
+                                              "alg":  "SHA-256",
+                                              "content":  "8ff40cf7845a10a9ef34d2147dd4aa51c09552b231c268144d97abc628e24d68"
+                                          }
+                                      ],
+                           "name":  "request-to-verify.docx",
+                           "bom-ref":  "file:vendor/templates/request-to-verify.docx",
+                           "description":  "AUSTRAC Legal profession program starter kit / Conveyancers template (January 2026 release). See VERIFIED.md for AUSTRAC source filename.",
+                           "type":  "file",
+                           "licenses":  [
+                                            {
+                                                "license":  {
+                                                                "id":  "CC-BY-4.0",
+                                                                "url":  "https://creativecommons.org/licenses/by/4.0/"
+                                                            }
+                                            }
+                                        ]
+                       },
+                       {
+                           "hashes":  [
+                                          {
+                                              "alg":  "SHA-256",
+                                              "content":  "a64cad4060689eb47679ba66dcea3b1967583ec39e28853a9854e00bf06d2f95"
+                                          }
+                                      ],
+                           "name":  "trigger-event-review.docx",
+                           "bom-ref":  "file:vendor/templates/trigger-event-review.docx",
+                           "description":  "AUSTRAC Legal profession program starter kit / Conveyancers template (January 2026 release). See VERIFIED.md for AUSTRAC source filename.",
+                           "type":  "file",
+                           "licenses":  [
+                                            {
+                                                "license":  {
+                                                                "id":  "CC-BY-4.0",
+                                                                "url":  "https://creativecommons.org/licenses/by/4.0/"
+                                                            }
+                                            }
+                                        ]
+                       },
+                       {
+                           "hashes":  [
+                                          {
+                                              "alg":  "SHA-256",
+                                              "content":  "7ea1de85ff9fdf8433a74678f28ee33962788d3e7f85bf0ff6a12c4b3cff8348"
+                                          }
+                                      ],
+                           "name":  "unusual-activity-info.docx",
+                           "bom-ref":  "file:vendor/templates/unusual-activity-info.docx",
+                           "description":  "AUSTRAC Legal profession program starter kit / Conveyancers template (January 2026 release). See VERIFIED.md for AUSTRAC source filename.",
+                           "type":  "file",
+                           "licenses":  [
+                                            {
+                                                "license":  {
+                                                                "id":  "CC-BY-4.0",
+                                                                "url":  "https://creativecommons.org/licenses/by/4.0/"
+                                                            }
+                                            }
+                                        ]
+                       },
+                       {
+                           "hashes":  [
+                                          {
+                                              "alg":  "SHA-256",
+                                              "content":  "2a28da73e17592c4e1055aa9a2a0767e07d232eba490f853ee8e5703f4570cd2"
+                                          }
+                                      ],
+                           "name":  "unusual-activity-review.docx",
+                           "bom-ref":  "file:vendor/templates/unusual-activity-review.docx",
+                           "description":  "AUSTRAC Legal profession program starter kit / Conveyancers template (January 2026 release). See VERIFIED.md for AUSTRAC source filename.",
+                           "type":  "file",
+                           "licenses":  [
+                                            {
+                                                "license":  {
+                                                                "id":  "CC-BY-4.0",
+                                                                "url":  "https://creativecommons.org/licenses/by/4.0/"
+                                                            }
+                                            }
+                                        ]
+                       }
+                   ]
+}
