@@ -1,0 +1,54 @@
+# OpenSSF Scorecard analysis. Runs weekly + on push to main + when branch
+# protection rules change. Results upload as SARIF to GitHub code-scanning.
+#
+# Actions are pinned to commit SHAs (per the OpenSSF Scorecard
+# "Pinned-Dependencies" check) with the upstream version tag in a trailing
+# comment. To update an action: open the GitHub release page
+# (https://github.com/<org>/<repo>/releases/tag/<version>), copy the
+# commit SHA, replace below, and update the version comment.
+
+name: OpenSSF Scorecard
+
+on:
+  branch_protection_rule:
+  schedule:
+    - cron: '37 5 * * 1'
+  push:
+    branches: [ "main" ]
+
+permissions: read-all
+
+jobs:
+  analysis:
+    name: Scorecard analysis
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: write
+      id-token: write
+      contents: read
+      actions: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+        with:
+          persist-credentials: false
+
+      - name: Run analysis
+        uses: ossf/scorecard-action@62b2cac7ed8198b15735ed49ab1e5cf35480ba46 # v2.4.0
+        with:
+          results_file: results.sarif
+          results_format: sarif
+          publish_results: true
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@834a144ee995460fba8ed112a2fc961b36a5ec5a # v4.3.6
+        with:
+          name: SARIF file
+          path: results.sarif
+          retention-days: 5
+
+      - name: Upload to code-scanning
+        uses: github/codeql-action/upload-sarif@4dd16135b69a43b6c8efb853346f8437d92d3c93 # v3.26.6
+        with:
+          sarif_file: results.sarif

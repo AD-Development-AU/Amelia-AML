@@ -1,0 +1,121 @@
+name: Release provenance (SLSA)
+
+# Generates SLSA Level 3 provenance for tagged releases using the
+# slsa-framework/slsa-github-generator generic generator. Attaches:
+#   - the single-file HTML artefact (aml-starter-kit-v{version}.html)
+#   - SHA-256 checksum file
+#   - SLSA provenance attestation
+# to the GitHub Release, which a downstream user can verify with
+# `slsa-verifier` to confirm the artefact was built from the named
+# tag in this repository.
+
+on:
+  push:
+    tags:
+      - 'v*'   # any vX.Y.Z tag
+
+permissions: read-all
+
+jobs:
+  # 1) Stage the artefact and compute its hash.
+  # No build step is required — the canonical single-file HTML is the
+  # already-checked-in artefact. (Per BUILD.md, the maintainer runs
+  # _build-inline.ps1 locally before tagging.)
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    outputs:
+      artefact-name: ${{ steps.stage.outputs.artefact-name }}
+      hashes:       ${{ steps.hash.outputs.hashes }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+        with:
+          persist-credentials: false
+
+      - name: Resolve artefact for this tag
+        id: stage
+        run: |
+          set -euo pipefail
+          # Tag is v0.2.0 -> files are aml-starter-kit-v0.2.0.html + .zip
+          TAG="${GITHUB_REF_NAME}"
+          ARTEFACT="aml-starter-kit-${TAG}.html"
+          ZIP="aml-starter-kit-${TAG}.zip"
+          if [ ! -f "${ARTEFACT}" ]; then
+            echo "Expected artefact ${ARTEFACT} not present in the tagged commit."
+            echo "BUILD.md requires _build-inline.ps1 to have been run before tagging."
+            exit 1
+          fi
+          if [ ! -f "${ZIP}" ]; then
+            echo "Expected release ZIP ${ZIP} not present in the tagged commit."
+            echo "_build-inline.ps1 produces it automatically — re-run before tagging."
+            exit 1
+          fi
+          mkdir -p dist
+          cp "${ARTEFACT}" "dist/${ARTEFACT}"
+          cp "${ZIP}"      "dist/${ZIP}"
+          echo "artefact-name=${ARTEFACT}" >> "${GITHUB_OUTPUT}"
+          echo "zip-name=${ZIP}"           >> "${GITHUB_OUTPUT}"
+
+      - name: Compute SHA-256 of artefacts
+        id: hash
+        run: |
+          set -euo pipefail
+          cd dist
+          # SLSA generic generator expects base64-encoded `<hash>  <name>` lines.
+          sha256sum "${{ steps.stage.outputs.artefact-name }}" \
+                    "${{ steps.stage.outputs.zip-name }}" \
+            | base64 -w0 > hashes.b64
+          echo "hashes=$(cat hashes.b64)" >> "${GITHUB_OUTPUT}"
+
+      - name: Upload artefacts for the release job
+        uses: actions/upload-artifact@834a144ee995460fba8ed112a2fc961b36a5ec5a # v4.3.6
+        with:
+          name: release-artefact
+          path: |
+            dist/${{ steps.stage.outputs.artefact-name }}
+            dist/${{ steps.stage.outputs.zip-name }}
+          if-no-files-found: error
+
+  # 2) Generate SLSA provenance. This calls the reusable workflow
+  # provided by the slsa-github-generator project. The workflow
+  # has its own pinned actions; we pin it to a release tag here.
+  provenance:
+    needs: [build]
+    permissions:
+      actions: read
+      id-token: write
+      contents: write
+    uses: slsa-framework/slsa-github-generator/.github/workflows/generator_generic_slsa3.yml@v2.0.0
+    with:
+      base64-subjects: ${{ needs.build.outputs.hashes }}
+      upload-assets: true   # attach the .intoto.jsonl provenance to the GitHub Release
+
+  # 3) Publish the artefact + a SHA-256 checksum file to the GitHub Release.
+  publish:
+    needs: [build, provenance]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Download artefact
+        uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4.1.8
+        with:
+          name: release-artefact
+          path: dist
+
+      - name: Generate human-readable checksum file
+        run: |
+          set -euo pipefail
+          cd dist
+          sha256sum * > SHA256SUMS.txt
+          cat SHA256SUMS.txt
+
+      - name: Attach to GitHub Release
+        uses: softprops/action-gh-release@72f2c25fcb47643c292f7107632f7a47c1df5cd8 # v2.3.2
+        with:
+          files: |
+            dist/${{ needs.build.outputs.artefact-name }}
+            dist/aml-starter-kit-*.zip
+            dist/SHA256SUMS.txt
