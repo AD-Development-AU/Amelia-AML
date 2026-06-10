@@ -1,0 +1,316 @@
+<!doctype html>
+<!--
+  GitHub Pages landing page for the AML Starter Kit Assistant.
+
+  After tagging v0.2.0 + creating the GitHub repo, replace every occurrence
+  of `OWNER` and `REPO` below with your GitHub username and repo name.
+  Once GitHub Pages is enabled (Settings → Pages → Source: main branch / /docs),
+  this page lives at https://OWNER.github.io/REPO/
+-->
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AML Starter Kit Assistant — Download</title>
+  <meta name="description" content="Free, local-first wizard that customises AUSTRAC's Legal profession program starter kit to your Australian law firm. Tranche 2 starts 1 July 2026." />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; base-uri 'self'" />
+
+  <style>
+    :root {
+      --ink: #0f1419;
+      --muted: #5a6573;
+      --line: #eaecef;
+      --accent: #0f7490;
+      --accent-dark: #084c61;
+      --accent-soft: #e8f4f7;
+      --panel: #ffffff;
+      --bg: #f6f7f9;
+      --green: #2a7d5a;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.55;
+    }
+    header {
+      background: linear-gradient(135deg, #084c61 0%, #0d6580 100%);
+      color: white;
+      padding: 56px 24px 48px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0 0 8px;
+      font-size: 36px;
+      letter-spacing: -0.01em;
+    }
+    header .tagline {
+      margin: 0 0 8px;
+      font-size: 18px;
+      opacity: 0.92;
+    }
+    header .pitch {
+      margin: 0 auto;
+      max-width: 640px;
+      font-size: 15px;
+      opacity: 0.82;
+    }
+    main {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 36px 24px 64px;
+    }
+    .cta {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 32px 28px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.04);
+      text-align: center;
+      margin-top: -32px;
+    }
+    .cta a.download {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      padding: 16px 36px;
+      font-size: 17px;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: background 0.15s ease;
+    }
+    .cta a.download:hover { background: var(--accent-dark); }
+    .cta .size {
+      display: block;
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 12px;
+    }
+    .cta .version {
+      display: block;
+      font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 16px;
+      letter-spacing: 0;
+    }
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin: 28px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .features li {
+      background: var(--accent-soft);
+      border-radius: 8px;
+      padding: 14px 16px;
+      font-size: 14px;
+      color: var(--accent-dark);
+    }
+    .features li strong {
+      display: block;
+      margin-bottom: 2px;
+      color: var(--ink);
+    }
+    section {
+      margin-top: 40px;
+    }
+    section h2 {
+      font-size: 21px;
+      margin: 0 0 14px;
+      letter-spacing: -0.005em;
+    }
+    .steps {
+      counter-reset: step;
+      padding: 0;
+      list-style: none;
+    }
+    .steps li {
+      counter-increment: step;
+      position: relative;
+      padding: 10px 0 10px 44px;
+      font-size: 15px;
+    }
+    .steps li::before {
+      content: counter(step);
+      position: absolute;
+      left: 0; top: 8px;
+      width: 28px; height: 28px;
+      background: var(--accent);
+      color: white;
+      border-radius: 50%;
+      text-align: center;
+      font-weight: 600;
+      line-height: 28px;
+      font-size: 14px;
+    }
+    .callout {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--accent);
+      border-radius: 6px;
+      padding: 14px 18px;
+      font-size: 14px;
+    }
+    .callout strong { color: var(--accent-dark); }
+    details {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 14px 18px;
+      margin-top: 14px;
+    }
+    details summary { cursor: pointer; font-weight: 600; }
+    details code {
+      background: var(--accent-soft);
+      padding: 1px 5px;
+      border-radius: 3px;
+      font-size: 12px;
+      word-break: break-all;
+    }
+    details pre {
+      background: var(--bg);
+      padding: 12px;
+      border-radius: 4px;
+      overflow-x: auto;
+      font-size: 12px;
+    }
+    footer {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 24px;
+      font-size: 13px;
+      color: var(--muted);
+      text-align: center;
+      border-top: 1px solid var(--line);
+    }
+    footer a { color: var(--accent); }
+    .small { font-size: 13px; color: var(--muted); }
+    .disclaimer {
+      margin-top: 36px;
+      font-size: 13px;
+      color: var(--muted);
+      padding: 16px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>AML Starter Kit Assistant</h1>
+  <p class="tagline">Most compliance work is not hard. It is just unstarted. This gets you started.</p>
+  <p class="pitch">
+    A free, local-first wizard that customises AUSTRAC's Legal profession program starter kit to your
+    firm. Tranche 2 obligations commence 1 July 2026. Built for Australian legal practices of 15 or fewer.
+  </p>
+</header>
+
+<main>
+
+  <div class="cta">
+    <a class="download" href="https://github.com/OWNER/REPO/releases/latest/download/aml-starter-kit-v0.2.0.zip">
+      Download v0.2.0  (≈12 MB)
+    </a>
+    <span class="size">.zip — extract, then double-click the .html inside</span>
+    <span class="version">aml-starter-kit-v0.2.0.zip · SHA-256 published with each release</span>
+  </div>
+
+  <ul class="features">
+    <li><strong>Runs on your computer</strong>Nothing is uploaded. No account, no login.</li>
+    <li><strong>One file</strong>No install, no admin, no server.</li>
+    <li><strong>Open source</strong>MIT-licensed; AUSTRAC content under CC BY 4.0.</li>
+    <li><strong>Tranche 2 ready</strong>Modelled on AUSTRAC's Jan 2026 release.</li>
+  </ul>
+
+  <section>
+    <h2>How to use it</h2>
+    <ol class="steps">
+      <li>Click <strong>Download v0.2.0</strong> above. Save the ZIP to your computer.</li>
+      <li>Open the ZIP and extract the two files to a folder you'll remember (e.g. your Documents folder).</li>
+      <li>Double-click <code>aml-starter-kit-v0.2.0.html</code>. It opens in your browser.</li>
+      <li>Work through the 12 steps. Your answers stay on your computer.</li>
+    </ol>
+    <p class="small">
+      Works on Windows, macOS and Linux. Any modern browser (Chrome, Edge, Firefox, Safari).
+      The ZIP contains the wizard plus a small companion file used by the in-app journey map.
+    </p>
+  </section>
+
+  <section>
+    <h2>What it does</h2>
+    <p>
+      Walks you through suitability check, practice profile, governance, the nine designated services
+      under AML/CTF Act s&nbsp;6(5B) Table 6, customer types and risk profile, customer due diligence,
+      reporting (SMR / TTR / IFTI), recordkeeping, training, and key dates. Then generates the
+      AUSTRAC starter-kit documents (policy, risk assessment, customer forms, maintain-program forms)
+      pre-filled with your inputs, ready to review and adapt.
+    </p>
+    <p>
+      <strong>What it does not do.</strong> It is not legal advice. It does not decide compliance,
+      verify customer identity, screen sanctions or PEPs, monitor transactions, or lodge reports to
+      AUSTRAC. Those remain with the practice.
+    </p>
+  </section>
+
+  <section>
+    <h2>Privacy and security</h2>
+    <div class="callout">
+      <strong>Your data never leaves your computer.</strong> The wizard runs entirely in your
+      browser. There is no server. There is no analytics. There is no account. Your inputs are
+      stored in your browser's local storage on your machine, and exported backups are encrypted
+      by default with a passphrase you choose.
+    </div>
+    <p class="small" style="margin-top:12px;">
+      Read <a href="https://github.com/OWNER/REPO/blob/main/PRIVACY.md">PRIVACY.md</a> for the full
+      privacy posture, and <a href="https://github.com/OWNER/REPO/blob/main/LPP.md">LPP.md</a> for
+      how solicitor confidentiality and legal professional privilege are handled.
+    </p>
+  </section>
+
+  <section>
+    <h2>Verify the download</h2>
+    <details>
+      <summary>Show verification steps</summary>
+      <p>
+        Each release publishes a <code>SHA256SUMS.txt</code> file and a SLSA Level 3 provenance
+        attestation. The release page is the canonical source of truth.
+      </p>
+      <p><strong>Windows (PowerShell):</strong></p>
+      <pre>Get-FileHash -Algorithm SHA256 -Path .\aml-starter-kit-v0.2.0.zip</pre>
+      <p><strong>macOS / Linux:</strong></p>
+      <pre>shasum -a 256 aml-starter-kit-v0.2.0.zip</pre>
+      <p>
+        Compare the output to the SHA-256 in
+        <a href="https://github.com/OWNER/REPO/releases/latest">the release page</a>.
+        If it doesn't match, do not run the file — re-download from the release page.
+      </p>
+    </details>
+  </section>
+
+  <div class="disclaimer">
+    <strong>Not legal advice. Not approved by AUSTRAC.</strong>
+    Modelled on AUSTRAC's publicly published Legal profession program starter kit (January 2026
+    release). This tool is not affiliated with, endorsed by, or sponsored by AUSTRAC.
+    Confirm with your professional indemnity insurer before relying on it. See the
+    <a href="https://github.com/OWNER/REPO/blob/main/DISCLAIMER.md">full disclaimer</a>.
+  </div>
+
+</main>
+
+<footer>
+  Source code: <a href="https://github.com/OWNER/REPO">github.com/OWNER/REPO</a>
+  · MIT-licensed
+  · AUSTRAC content reused under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>
+  · © Commonwealth of Australia 2026
+</footer>
+
+</body>
+</html>
