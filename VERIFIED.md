@@ -193,6 +193,18 @@ content and inherit the CC BY 4.0 grant.
 genuine PNG (`89 50 4E 47` magic bytes). No file is a misnamed binary or
 embedded executable.
 
+## Published release checksums
+
+| Release | Artifact | SHA-256 |
+|---|---|---|
+| v0.2.0 | `aml-starter-kit-v0.2.0.html` | `3f29e13cbcbb268ab80ba9b594118c92cb07f7be0c9a8c445135167752e30c4c` |
+
+The companion `aml-starter-kit-v0.2.0.zip` is built at release time by
+the SLSA-attested workflow; its SHA-256 is published in
+[`SHA256SUMS.txt`](https://github.com/AD-Development-AU/Amelia-AML/releases/latest)
+attached to the GitHub release. That file is the single source of
+truth for the ZIP hash.
+
 ## How to contribute verification
 
 1. Open the AUSTRAC document library URL listed in `README.md`.
